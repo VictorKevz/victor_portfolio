@@ -1,0 +1,83 @@
+import type { Metadata } from "next";
+import { Playfair_Display, DM_Sans } from "next/font/google";
+import { siteConfig } from "@/config/site.config";
+import { ThemeProvider } from "@/lib/contexts/ThemeContext";
+import { ToastProvider } from "@/lib/contexts/ToastContext";
+import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
+import "./globals.css";
+
+const playfairDisplay = Playfair_Display({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-playfair",
+  weight: ["400", "500", "600", "700", "800", "900"],
+  preload: true,
+  fallback: ["Georgia", "serif"],
+});
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-dm-sans",
+  weight: ["400", "500", "600", "700"],
+  preload: true,
+  fallback: ["system-ui", "sans-serif"],
+});
+
+export const metadata: Metadata = {
+  title: siteConfig.site.name,
+  description: siteConfig.site.description,
+  metadataBase: new URL(siteConfig.site.url),
+  icons: {
+    icon: [
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
+  manifest: "/site.webmanifest",
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html
+      lang="en"
+      className={`${playfairDisplay.variable} ${dmSans.variable}`}
+      suppressHydrationWarning
+    >
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                const storedTheme = localStorage.getItem('theme');
+                const theme = storedTheme || 'dark';
+                document.documentElement.setAttribute('data-theme', theme);
+              })();
+            `,
+          }}
+        />
+      </head>
+      <body className={dmSans.className}>
+        <GoogleAnalytics />
+        <div className="w-full">
+          <ThemeProvider>
+            <ToastProvider>{children}</ToastProvider>
+          </ThemeProvider>
+        </div>
+      </body>
+    </html>
+  );
+}
