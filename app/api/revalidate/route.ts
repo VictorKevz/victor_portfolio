@@ -2,15 +2,12 @@ import { NextRequest, NextResponse } from "next/server";
 import { revalidatePath, revalidateTag } from "next/cache";
 
 /**
- *
- * On-demand revalidation endpoint for WordPress webhooks.
- * Invalidates the cache for specific pages or tags when WordPress content is updated.
+ * On-demand revalidation endpoint.
  *
  * Query parameters:
  * - secret: Required. Must match REVALIDATION_SECRET environment variable
  * - path: Optional. Page path to revalidate (e.g., '/fi', '/en')
- * - tag: Optional. Cache tag to revalidate (e.g., 'wordpress', 'homepage')
- *
+ * - tag: Optional. Cache tag to revalidate (e.g., 'homepage')
  */
 export async function POST(request: NextRequest) {
   try {
@@ -59,18 +56,6 @@ export async function POST(request: NextRequest) {
       revalidatedPaths.push(path);
     }
     
-    if (tag === "wordpress") {
-      revalidatePath("/fi", "layout");
-      revalidatePath("/en", "layout");
-      if (!revalidatedPaths.includes("/fi")) revalidatedPaths.push("/fi");
-      if (!revalidatedPaths.includes("/en")) revalidatedPaths.push("/en");
-    }
-    if (tag === "blog") {
-      revalidatePath("/sitemap.xml");
-      if (!revalidatedPaths.includes("/sitemap.xml"))
-        revalidatedPaths.push("/sitemap.xml");
-    }
-
     return NextResponse.json({
       revalidated: true,
       tag: tag ?? null,

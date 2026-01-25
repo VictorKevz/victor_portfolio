@@ -135,7 +135,9 @@ async function submitToBrevo(
       formData.locale === "fi" || formData.locale === "en"
         ? formData.locale
         : "en";
-    const authenticatedUrl = `${siteUrl}/mini-course?ref=${submissionToken}&lang=${language}`;
+    const authenticatedUrl = siteUrl
+      ? `${siteUrl}/${language}`
+      : `/${language}`;
 
     const brevoPayload = {
       email: formData.email,

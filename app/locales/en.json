@@ -1,0 +1,77 @@
+{
+  "meta": {
+    "title": "Victor Kuwandira – Frontend Developer | React, Next.js, TypeScript",
+    "description": "Portfolio of Victor Kuwandira, frontend-focused software developer. Showcasing projects in React, Next.js, TypeScript, and AI-powered integrations. Explore case studies, coding work, and tech insights.",
+    "keywords": [
+      "Frontend developer",
+      "React developer",
+      "Next.js",
+      "TypeScript",
+      "web development portfolio",
+      "AI integration",
+      "software projects",
+      "UX/UI collaboration"
+    ]
+  },
+  "site": {
+    "name": "Victor Kuwandira"
+  },
+  "author": {
+    "name": "Victor Kuwandira",
+    "role": "Frontend Developer",
+    "bio": ""
+  },
+  "organization": {
+    "name": "Victor Kuwandira",
+    "description": ""
+  },
+  "topics": [
+    "Frontend developer",
+    "React developer",
+    "Next.js",
+    "TypeScript",
+    "web development portfolio",
+    "AI integration",
+    "software projects",
+    "UX/UI collaboration"
+  ],
+  "header": {
+    "menu": {
+      "open": "Menu",
+      "close": "Close"
+    },
+    "locale": {
+      "english": "English",
+      "suomi": "Suomi"
+    },
+    "nav": {
+      "home": "Home",
+      "services": "Services",
+      "skills": "Skills",
+      "recommendations": "Recommendations",
+      "contact": "Contact"
+    },
+    "cta": {
+      "viewProjects": "View Projects >"
+    }
+  },
+  "hero": {
+    "location": "Oulu, Finland",
+    "label": "Web Developer",
+    "title": "I am Victor.",
+    "description": "Frontend-focused web developer building scalable, user-centered digital products. Specialized in React, Next.js, and headless CMS architectures.",
+    "cta": {
+      "primary": "View Projects",
+      "secondary": "Get in Touch"
+    },
+    "badge": {
+      "title": "Web Development Meets Business & AI",
+      "items": [
+        "Business-Driven Web Developer",
+        "AI-Powered Interfaces",
+        "SEO & Performance Focused",
+        "Next.js / React / TypeScript"
+      ]
+    }
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "meta": {
+    "title": "Victor Kuwandira – Frontend-kehittäjä | React, Next.js, TypeScript",
+    "description": "Victor Kuwandira portfolio: frontend-kehittäjä, joka erikoistunut Reactiin, Next.js:ään ja TypeScriptiin. Tutustu projekteihin, koodinäytteisiin ja teknisiin ratkaisuihin.",
+    "keywords": [
+      "Frontend-kehittäjä",
+      "React-kehittäjä",
+      "Next.js",
+      "TypeScript",
+      "web-kehitys",
+      "ohjelmistoprojektit",
+      "UX/UI-yhteistyö",
+      "AI-integraatio"
+    ]
+  },
+  "site": {
+    "name": "Victor Kuwandira"
+  },
+  "author": {
+    "name": "Victor Kuwandira",
+    "role": "Frontend-kehittäjä",
+    "bio": ""
+  },
+  "organization": {
+    "name": "Victor Kuwandira",
+    "description": ""
+  },
+  "topics": [
+    "Frontend-kehittäjä",
+    "React-kehittäjä",
+    "Next.js",
+    "TypeScript",
+    "web-kehitys",
+    "ohjelmistoprojektit",
+    "UX/UI-yhteistyö",
+    "AI-integraatio"
+  ],
+  "header": {
+    "menu": {
+      "open": "Valikko",
+      "close": "Sulje"
+    },
+    "locale": {
+      "english": "English",
+      "suomi": "Suomi"
+    },
+    "nav": {
+      "home": "Etusivu",
+      "services": "Palvelut",
+      "skills": "Taidot",
+      "recommendations": "Suositukset",
+      "contact": "Yhteys"
+    },
+    "cta": {
+      "viewProjects": "Katso projektit >"
+    }
+  },
+  "hero": {
+    "location": "Oulu, Suomi",
+    "label": "Web-kehittäjä",
+    "title": "Olen Victor",
+    "description": "Frontend-painotteinen web-kehittäjä, joka rakentaa skaalautuvia ja käyttäjälähtöisiä digitaalisia tuotteita. Erikoistunut Reactiin, Next.js:ään ja headless CMS -arkkitehtuureihin.",
+    "cta": {
+      "primary": "Katso projektit",
+      "secondary": "Ota yhteyttä"
+    },
+    "badge": {
+      "title": "Web-kehitys kohtaa liiketoiminnan ja tekoälyn",
+      "items": [
+        "Liiketoimintalähtöinen web-kehittäjä",
+        "Tekoälyä hyödyntävät käyttöliittymät",
+        "SEO- ja suorituskykyfokus",
+        "Next.js / React / TypeScript"
+      ]
+    }
+  }
+}

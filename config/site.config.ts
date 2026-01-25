@@ -22,78 +22,31 @@ export interface SiteConfig {
     locales: ("en" | "fi")[];
   };
   topics: string[];
-  hubPages: {
-    sales: {
-      title: string;
-      description: string;
-      slug: string;
-    };
-    ai: {
-      title: string;
-      description: string;
-      slug: string;
-    };
-    entrepreneurship: {
-      title: string;
-      description: string;
-      slug: string;
-    };
-    "beauty-wellness"?: {
-      title: string;
-      description: string;
-      slug: string;
-    };
-  };
-  contentSource: "static" | "wordpress";
+  contentSource: "static";
 }
 
 export const siteConfig: SiteConfig = {
   author: {
-    firstName: "Markku",
-    lastName: "Tauriainen",
-    name: "Markku Tauriainen",
-    bio: "Sales professional with 50 years of experience, now integrating AI strategies for modern business.",
-    role: "Founder / Sales & AI Strategist",
-    email: "markku@example.com",
-    website: "https://markkutauriainen.com",
+    firstName: "Victor",
+    lastName: "Kuwandira",
+    name: "Victor Kuwandira",
+    bio: "",
+    role: "",
+    website: "https://victorkevz.com",
   },
   organization: {
-    name: "Helios Digitech",
-    description: "Digital transformation and AI strategy consulting",
-    website: "https://heliosdigitech.com",
-    logo: "/logo.webp",
+    name: "Victor Kuwandira",
+    description: "",
+    website: "https://victorkevz.com",
+    logo: "/victor_logo.png",
   },
   site: {
-    name: "Markku Tauriainen",
-    description:
-      "Personal page of an experienced sales professional and AI strategy expert. I help you see the situation as it is and take the first sensible step forward.",
-    url: "https://markkutauriainen.com",
-    defaultLocale: "fi",
-    locales: ["fi", "en"],
+    name: "Victor Kuwandira",
+    description: "",
+    url: "https://victorkevz.com",
+    defaultLocale: "en",
+    locales: ["en", "fi"],
   },
-  topics: [
-    "Sales",
-    "AI Strategy",
-    "Entrepreneurship",
-    "Digital Transformation",
-    "Business Growth",
-  ],
-  hubPages: {
-    sales: {
-      title: "Sales",
-      description: "Sales strategies, techniques, and insights",
-      slug: "sales",
-    },
-    ai: {
-      title: "AI Strategy",
-      description: "Artificial intelligence for business",
-      slug: "ai",
-    },
-    entrepreneurship: {
-      title: "Entrepreneurship",
-      description: "Building and growing businesses",
-      slug: "entrepreneurship",
-    },
-  },
+  topics: [],
   contentSource: "static",
 };

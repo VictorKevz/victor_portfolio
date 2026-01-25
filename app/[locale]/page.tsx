@@ -1,13 +1,9 @@
-import { getHomePageData } from '@/lib/wordpress/api';
-import HeroSection from '@/components/sections/HeroSection';
-import MarkkuSection from '@/components/sections/MarkkuSection';
-import ContactSection from '@/components/sections/ContactSection';
-import { isValidLocale, type Locale } from '@/lib/i18n/config';
-import { siteConfig } from '@/config/site.config';
-import { notFound } from 'next/navigation';
-import type { Metadata } from 'next';
-
-export const dynamic = 'force-dynamic';
+import { isValidLocale, type Locale } from "@/lib/i18n/config";
+import { siteConfig } from "@/config/site.config";
+import { getTranslation } from "@/lib/i18n/translations";
+import { notFound } from "next/navigation";
+import type { Metadata } from "next";
+import HeroSection from "@/components/sections/HeroSection";
 
 interface PageProps {
   params: Promise<{
@@ -24,42 +20,33 @@ export async function generateMetadata({
     return {};
   }
 
-  try {
-    const wpData = await getHomePageData(locale);
-    const seo = locale === 'en' ? wpData.acf.seo_en : wpData.acf.seo_fi;
-    const defaultUrl = `${siteConfig.site.url}/${locale}`;
+  const defaultUrl = `${siteConfig.site.url}/${locale}`;
+  const title = getTranslation(locale, "meta.title");
+  const description = getTranslation(locale, "meta.description");
+  const keywords = getTranslation(locale, "meta.keywords");
 
-    return {
-      title: seo?.meta_title || siteConfig.site.name,
-      description: seo?.meta_description || siteConfig.site.description,
-      alternates: {
-        canonical: seo?.canonical || defaultUrl,
-      },
-    };
-  } catch {
-    return {};
-  }
+  return {
+    title: typeof title === "string" ? title : siteConfig.site.name,
+    description:
+      typeof description === "string"
+        ? description
+        : siteConfig.site.description,
+    keywords:
+      Array.isArray(keywords) && keywords.every((k) => typeof k === "string")
+        ? (keywords as string[])
+        : undefined,
+    alternates: {
+      canonical: defaultUrl,
+    },
+  };
 }
 
 export default async function HomePage({ params }: PageProps) {
   const { locale } = await params;
-  
+
   if (!isValidLocale(locale)) {
     notFound();
   }
-  
-  try {
-    const wpData = await getHomePageData(locale);
-    
-    return (
-      <>
-        <HeroSection data={wpData.acf.hero_section} locale={locale} />
-        <MarkkuSection data={wpData.acf.markku_section} />
-        <ContactSection data={wpData.acf.contact_section} locale={locale} />
-      </>
-    );
-  } catch (error) {
-    // Re-throw error to trigger error.tsx
-    throw error;
-  }
+
+  return <HeroSection locale={locale as Locale} />;
 }

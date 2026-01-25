@@ -7,67 +7,7 @@ import LightMode from "@mui/icons-material/LightMode";
 import { useTheme } from "@/lib/contexts/ThemeContext";
 import type { Locale } from "@/lib/i18n/config";
 import { getLocalizedPath, removeLocaleFromPath } from "@/lib/i18n/config";
-
-const WP_BASE_URL =
-  process.env.NEXT_PUBLIC_WP_BASE_URL ??
-  "https://wp.markkutauriainen.com/wp-json/wp/v2";
-
-async function getTranslatedPillarSlug(pillarSlug: string): Promise<string | null> {
-  try {
-    const params = new URLSearchParams({
-      slug: pillarSlug,
-      acf_format: "standard",
-      _fields: "acf,slug",
-    });
-    const response = await fetch(`${WP_BASE_URL}/pillar?${params.toString()}`);
-    if (!response.ok) {
-      return null;
-    }
-    const data = (await response.json()) as Array<{
-      acf?: {
-        pillar_data?: {
-          translation_pillar?: { post_name?: string } | false;
-        };
-      };
-    }>;
-    const translation = data?.[0]?.acf?.pillar_data?.translation_pillar;
-    const translatedSlug =
-      translation && typeof translation === "object" ? translation.post_name : null;
-    return translatedSlug || null;
-  } catch {
-    return null;
-  }
-}
-
-async function getTranslatedPostSlug(postSlug: string): Promise<string | null> {
-  try {
-    const params = new URLSearchParams({
-      slug: postSlug,
-      acf_format: "standard",
-      _fields: "acf,slug",
-    });
-    const response = await fetch(`${WP_BASE_URL}/posts?${params.toString()}`);
-    if (!response.ok) {
-      return null;
-    }
-    const data = (await response.json()) as Array<{
-      acf?: {
-        blog_post?: {
-          header?: {
-            translation_post?: { post_name?: string } | false;
-          };
-        };
-      };
-    }>;
-    const translation =
-      data?.[0]?.acf?.blog_post?.header?.translation_post ?? false;
-    const translatedSlug =
-      translation && typeof translation === "object" ? translation.post_name : null;
-    return translatedSlug || null;
-  } catch {
-    return null;
-  }
-}
+import { getTranslation } from "@/lib/i18n/translations";
 
 interface HeaderControlsProps {
   currentLocale: Locale;
@@ -77,6 +17,9 @@ export function HeaderControls({ currentLocale }: HeaderControlsProps) {
   const router = useRouter();
   const pathname = usePathname();
   const { toggleTheme } = useTheme();
+  const toggleLabel = getTranslation(currentLocale, "header.toggleTheme");
+  const labelFi = getTranslation(currentLocale, "header.language.fi");
+  const labelEn = getTranslation(currentLocale, "header.language.en");
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -92,23 +35,9 @@ export function HeaderControls({ currentLocale }: HeaderControlsProps) {
     }
 
     const pathWithoutLocale = removeLocaleFromPath(pathname);
-    const segments = pathWithoutLocale.split("/").filter(Boolean);
-
-    if (segments[0] === "blog" && segments[1]) {
-      const translatedPillar = await getTranslatedPillarSlug(segments[1]);
-      if (translatedPillar) {
-        segments[1] = translatedPillar;
-      }
-
-      if (segments[2]) {
-        const translatedPost = await getTranslatedPostSlug(segments[2]);
-        if (translatedPost) {
-          segments[2] = translatedPost;
-        }
-      }
-    }
-
-    const nextPath = `/${segments.join("/")}`;
+    const nextPath = pathWithoutLocale.startsWith("/")
+      ? pathWithoutLocale
+      : `/${pathWithoutLocale}`;
     const newPath = getLocalizedPath(nextPath, locale);
     router.push(newPath);
   };
@@ -119,7 +48,7 @@ export function HeaderControls({ currentLocale }: HeaderControlsProps) {
         type="button"
         onClick={toggleTheme}
         className="flex items-center justify-center w-11 h-11 rounded-full border border-(--border-alpha-30) text-(--accent-warm) hover:border-(--accent-warm) transition-all duration-200"
-        aria-label="Toggle theme"
+        aria-label={typeof toggleLabel === "string" ? toggleLabel : "Toggle theme"}
       >
         <LightMode className="w-5 h-5" />
       </button>
@@ -132,12 +61,12 @@ export function HeaderControls({ currentLocale }: HeaderControlsProps) {
             ? "border-(--accent-warm)"
             : "border-(--border-alpha-30) hover:border-(--accent-warm)"
         }`}
-        aria-label="Suomi"
+        aria-label={typeof labelFi === "string" ? labelFi : "Suomi"}
         aria-pressed={currentLocale === "fi"}
       >
         <Image
           src="/fi.webp"
-          alt="Suomi"
+          alt={typeof labelFi === "string" ? labelFi : "Suomi"}
           width={24}
           height={18}
           className="w-6 h-auto"
@@ -152,12 +81,12 @@ export function HeaderControls({ currentLocale }: HeaderControlsProps) {
             ? "border-(--accent-warm)"
             : "border-(--border-alpha-30) hover:border-(--accent-warm)"
         }`}
-        aria-label="English"
+        aria-label={typeof labelEn === "string" ? labelEn : "English"}
         aria-pressed={currentLocale === "en"}
       >
         <Image
           src="/en.webp"
-          alt="English"
+          alt={typeof labelEn === "string" ? labelEn : "English"}
           width={24}
           height={18}
           className="w-6 h-auto"
