@@ -4,6 +4,7 @@ import { getTranslation } from "@/lib/i18n/translations";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import HeroSection from "@/components/sections/HeroSection";
+import ServicesSection from "@/components/sections/ServicesSection";
 
 interface PageProps {
   params: Promise<{
@@ -48,5 +49,10 @@ export default async function HomePage({ params }: PageProps) {
     notFound();
   }
 
-  return <HeroSection locale={locale as Locale} />;
+  return (
+    <main className="w-full">
+      <HeroSection locale={locale as Locale} />
+      <ServicesSection locale={locale as Locale} />
+    </main>
+  );
 }

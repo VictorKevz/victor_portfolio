@@ -59,7 +59,14 @@
     "location": "Oulu, Suomi",
     "label": "Web-kehittäjä",
     "title": "Olen Victor",
-    "description": "Frontend-painotteinen web-kehittäjä, joka rakentaa skaalautuvia ja käyttäjälähtöisiä digitaalisia tuotteita. Erikoistunut Reactiin, Next.js:ään ja headless CMS -arkkitehtuureihin.",
+    "description": {
+      "intro": "Frontend-painotteinen web-kehittäjä, joka rakentaa ",
+      "highlightUserCentered": "käyttäjälähtöisiä",
+      "mid": " digitaalisia tuotteita, suunniteltu ",
+      "highlightScalable": "skaalautuviksi",
+      "outro": ". ",
+      "stack": "Erikoistunut Reactiin, Next.js:ään ja headless CMS -arkkitehtuureihin."
+    },
     "cta": {
       "primary": "Katso projektit",
       "secondary": "Ota yhteyttä"
@@ -70,8 +77,57 @@
         "Liiketoimintalähtöinen web-kehittäjä",
         "Tekoälyä hyödyntävät käyttöliittymät",
         "SEO- ja suorituskykyfokus",
-        "Next.js / React / TypeScript"
+        "Next.js | Headless CMS | TypeScript"
       ]
     }
+  },
+  "services": {
+    "title": "Suorituskykyiset digitaaliset ratkaisut",
+    "description": "Rakennan nopeita, luotettavia ja käyttäjäkeskeisiä tuotteita, jotka on suunniteltu edistämään liiketoiminnan kasvua ja tehostamaan tiimisi toimintaa.",
+    "imageCaption": "Liiketoiminnan tarpeista tekniseen toteutukseen.",
+    "ctaTitle": "Onko projekti mielessä?",
+    "ctaDescription": "Etsin aina uusia haasteita ja mahdollisuuksia kehittyä.",
+    "items": [
+      {
+        "id": "headless-dev",
+        "title": "Headless-verkkokehitys",
+        "bullets": [
+          "Hajautettu Next.js-arkkitehtuuri",
+          "Headless CMS -joustavuus",
+          "Sisällöntuotannon vapaus",
+          "Nopeus ja SEO-perusta"
+        ]
+      },
+      {
+        "id": "ux-design",
+        "title": "UX-suunnittelu ja -tutkimus",
+        "bullets": [
+          "HCI-ohjattu UX-strategia",
+          "Käyttäjätutkimus ja oivallukset",
+          "Käytettävyystestauksen painotus",
+          "Selkeät, vaivattomat polut"
+        ]
+      },
+      {
+        "id": "web-apps",
+        "title": "Räätälöidyt verkkosovellukset",
+        "bullets": [
+          "React- ja TypeScript-toteutus",
+          "Tekoälyllä tehostetut työkalut",
+          "Tietoturvallinen datankäsittely",
+          "Sujuvat käyttäjäpolut"
+        ]
+      },
+      {
+        "id": "digital-strategy",
+        "title": "Digitaalinen kasvu ja strategia",
+        "bullets": [
+          "Sujuvat digitaaliset työnkulut",
+          "Yhtenäinen sisältöstrategia",
+          "Tietoon perustuvat valinnat",
+          "Vierailijasta uskolliseksi"
+        ]
+      }
+    ]
   }
 }

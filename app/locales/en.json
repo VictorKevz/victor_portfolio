@@ -59,7 +59,14 @@
     "location": "Oulu, Finland",
     "label": "Web Developer",
     "title": "I am Victor.",
-    "description": "Frontend-focused web developer building scalable, user-centered digital products. Specialized in React, Next.js, and headless CMS architectures.",
+    "description": {
+      "intro": "Frontend-focused web developer building ",
+      "highlightUserCentered": "user-centered",
+      "mid": " digital products, designed to be ",
+      "highlightScalable": "scalable",
+      "outro": ". ",
+      "stack": "Specialized in React, Next.js, and headless CMS architectures."
+    },
     "cta": {
       "primary": "View Projects",
       "secondary": "Get in Touch"
@@ -70,8 +77,57 @@
         "Business-Driven Web Developer",
         "AI-Powered Interfaces",
         "SEO & Performance Focused",
-        "Next.js / React / TypeScript"
+        "Next.js | Headless CMS | TypeScript"
       ]
     }
+  },
+  "services": {
+    "title": "High-Performance Digital Solutions",
+    "description": "Building fast, reliable, and user-centric products designed to help your business grow and your team thrive.",
+    "imageCaption": "From business requirements to technical implementation.",
+    "ctaTitle": "Have a project in mind?",
+    "ctaDescription": "I'm always looking for new challenges and opportunities to grow.",
+    "items": [
+      {
+        "id": "headless-dev",
+        "title": "Headless Web Development",
+        "bullets": [
+          "Decoupled Next.js architecture",
+          "Headless CMS flexibility",
+          "Editor-first content workflows",
+          "Speed and SEO foundations"
+        ]
+      },
+      {
+        "id": "ux-design",
+        "title": "UX Design & Research",
+        "bullets": [
+          "HCI-driven UX strategy",
+          "User research and insights",
+          "Usability testing focus",
+          "Clear, effortless journeys"
+        ]
+      },
+      {
+        "id": "web-apps",
+        "title": "Custom Web Applications",
+        "bullets": [
+          "React and TypeScript builds",
+          "AI-integrated workflows",
+          "Secure data handling",
+          "Seamless user flows"
+        ]
+      },
+      {
+        "id": "digital-strategy",
+        "title": "Digital Growth & Strategy",
+        "bullets": [
+          "Streamlined digital workflows",
+          "Cohesive content strategy",
+          "Data-informed decisions",
+          "Visitor-to-user conversion"
+        ]
+      }
+    ]
   }
 }

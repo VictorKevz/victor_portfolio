@@ -10,6 +10,7 @@ import type { Locale } from "@/lib/i18n/config";
 import { getTranslation } from "@/lib/i18n/translations";
 import { AnimatePresence, motion } from "framer-motion";
 import { Logo } from "@/components/ui/Logo";
+import { CTALink } from "@/components/ui/CTALink";
 import { siteConfig } from "@/config/site.config";
 
 interface HeaderProps {
@@ -151,7 +152,6 @@ export function Header({ locale }: HeaderProps) {
         label: getTranslation(locale, "header.nav.skills"),
         fallback: "Skills",
       },
-
       {
         href: "#contact",
         label: getTranslation(locale, "header.nav.contact"),
@@ -215,7 +215,7 @@ export function Header({ locale }: HeaderProps) {
       >
         <Logo
           href={`/${locale}`}
-          label={typeof logoLabel === "string" ? logoLabel : "Victor"}
+          label={logoLabel as string}
           iconClassName="w-14 h-14"
         />
 
@@ -232,7 +232,7 @@ export function Header({ locale }: HeaderProps) {
                   }`}
                   aria-current={activeHref === item.href ? "page" : undefined}
                 >
-                  {typeof item.label === "string" ? item.label : item.fallback}
+                  {item.label as string}
                 </Link>
               </li>
             ))}
@@ -240,12 +240,7 @@ export function Header({ locale }: HeaderProps) {
         </nav>
 
         <div className="hidden lg:flex items-center gap-3">
-          <Link
-            href="#projects"
-            className="bg-gradient-primary cta text-xs uppercase tracking-[0.08em] px-5 h-12 flex items-center justify-center rounded-full font-semibold hover:opacity-90 transition-opacity"
-          >
-            {typeof ctaLabel === "string" ? ctaLabel : "View Projects >"}
-          </Link>
+          <CTALink href="#projects" label={ctaLabel as string} variant="primary" />
           <div className="relative group">
             <button
               type="button"
@@ -295,11 +290,11 @@ export function Header({ locale }: HeaderProps) {
         locale={locale}
         navItems={navItems.map(({ href, label, fallback }) => ({
           href,
-          label: typeof label === "string" ? label : fallback,
+          label: (label as string) || fallback,
         }))}
         activeHref={activeHref}
-        ctaLabel={typeof ctaLabel === "string" ? ctaLabel : "View Projects >"}
-        logoLabel={typeof logoLabel === "string" ? logoLabel : "Victor"}
+        ctaLabel={ctaLabel as string}
+        logoLabel={logoLabel as string}
       />
     </header>
   );
