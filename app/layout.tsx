@@ -1,19 +1,10 @@
 import type { Metadata } from "next";
-import { Playfair_Display, DM_Sans } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 import { siteConfig } from "@/config/site.config";
 import { ThemeProvider } from "@/lib/contexts/ThemeContext";
 import { ToastProvider } from "@/lib/contexts/ToastContext";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import "./globals.css";
-
-const playfairDisplay = Playfair_Display({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-playfair",
-  weight: ["400", "500", "600", "700", "800", "900"],
-  preload: true,
-  fallback: ["Georgia", "serif"],
-});
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -47,9 +38,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
+      <html
       lang="en"
-      className={`${playfairDisplay.variable} ${dmSans.variable}`}
+      className={dmSans.variable}
       suppressHydrationWarning
     >
       <head>

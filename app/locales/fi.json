@@ -47,8 +47,7 @@
     "nav": {
       "home": "Etusivu",
       "services": "Palvelut",
-      "skills": "Taidot",
-      "recommendations": "Suositukset",
+      "projects": "Projektit",
       "contact": "Yhteys"
     },
     "cta": {
@@ -59,6 +58,8 @@
     "location": "Oulu, Suomi",
     "label": "Web-kehittäjä",
     "title": "Olen Victor",
+    "imageAlt": "Victor Kuwandiran muotokuva",
+    "scrollCta": "Siirry palveluihin",
     "description": {
       "intro": "Frontend-painotteinen web-kehittäjä, joka rakentaa ",
       "highlightUserCentered": "käyttäjälähtöisiä",
@@ -84,7 +85,7 @@
   "services": {
     "title": "Suorituskykyiset digitaaliset ratkaisut",
     "description": "Rakennan nopeita, luotettavia ja käyttäjäkeskeisiä tuotteita, jotka on suunniteltu edistämään liiketoiminnan kasvua ja tehostamaan tiimisi toimintaa.",
-    "imageCaption": "Liiketoiminnan tarpeista tekniseen toteutukseen.",
+    "imageAlt": "Palveluiden suunnittelutilanne",
     "ctaTitle": "Onko projekti mielessä?",
     "ctaDescription": "Etsin aina uusia haasteita ja mahdollisuuksia kehittyä.",
     "items": [
@@ -129,5 +130,177 @@
         ]
       }
     ]
+  },
+  "experience": {
+    "header": {
+      "title": "URAPOLKU",
+      "subtitle": "Katsaus ammatilliseen kasvuun ja akateemiseen huippuosaamiseen yli rajojen.",
+      "toggleOptions": {
+        "professional": "AMMATILLINEN",
+        "academic": "AKATEEMINEN"
+      }
+    },
+    "work": [
+      {
+        "dateRange": "DEC 2025 — PRESENT",
+        "location": "OULU, FINLAND",
+        "role": "NUOREMPI KEHITTÄJÄHARJOITTELIJA",
+        "company": "HeliosDigitech",
+        "achievements": [
+          "Kehitti headless WordPress -sivustoja, saavuttaen yli 96 % Lighthouse-pisteet.",
+          "Rakensi live-esikatselujärjestelmän webhooks-pohjaisella reaaliaikasynkronoinnilla.",
+          "Kasvatti käyttäjärekisteröitymisiä 15 % Brevo-automaatiolla ja liidien keruulla.",
+          "Muutti liiketoimintatavoitteet teknisiksi ratkaisuiksi yhdessä perustajan kanssa."
+        ],
+        "tags": ["NEXT.JS", "HEADLESS WORDPRESS", "REST API", "BREVO"]
+      },
+      {
+        "dateRange": "JULY 2021 — FEB 2022",
+        "location": "SHANGHAI, CHINA",
+        "role": "OPISKELIJAHARJOITTELIJA",
+        "company": "SDJU (Shanghai Dianji University)",
+        "achievements": [
+          "Paransi sisäistä verkkosovellusta yli 200 työntekijälle osana nelihenkistä Scrum-tiimiä.",
+          "Lyhensi tehtävien suoritusaikaa 30 % kohdennetuilla front-end-parannuksilla.",
+          "Nosti käytettävyysarvioita pilottitestauksessa perusteellisen käyttäjätutkimuksen avulla."
+        ],
+        "tags": ["REACT", "UI/UX", "KÄYTTÄJÄTUTKIMUS", "SCRUM"]
+      },
+      {
+        "dateRange": "JAN 2020 — SEP 2021",
+        "location": "ZIMBABWE",
+        "role": "PERUSTAJAJÄSEN / PROJEKTIPÄÄLLIKKÖ",
+        "company": "Kevz Tech",
+        "achievements": [
+          "Johti yli 100 IoT-järjestelmäasennusta ja paransi asiakkaiden operatiivista tehokkuutta.",
+          "Hallinnoi Ecwid-verkkokaupan operaatioita, käsitellen yli 500 tilausta.",
+          "Sujuvoitti varasto- ja myyntityönkulkuja liiketoiminnan tehostamiseksi."
+        ],
+        "tags": ["IOT-JÄRJESTELMÄT", "VERKKOKAUPPA", "ECWID", "OPERATIOT"]
+      }
+    ],
+    "education": [
+      {
+        "dateRange": "SEPT 2023 — JULY 2025",
+        "location": "OULU, FINLAND",
+        "degree": "TIETOJÄRJESTELMÄTIETEIDEN MAISTERIN TUTKINTO",
+        "institution": "University of Oulu",
+        "details": [
+          "Sai kokemusta koko ohjelmistokehityksen elinkaaresta käytännön projekteissa.",
+          "Keskittyi opinnoissaan ihmisen ja tietokoneen väliseen vuorovaikutukseen (HCI) sekä liiketoiminnan kehittämiseen.",
+          "Työskenteli ketterissä tiimeissä ja rakensi vahvan perusosaamisen tietojärjestelmistä."
+        ],
+        "tags": ["HCI", "OHJELMISTOKEHITYS", "UX-SUUNNITTELU", "SDLC"]
+      },
+      {
+        "dateRange": "SEPT 2018 — JULY 2022",
+        "location": "SHANGHAI, CHINA",
+        "degree": "OHJELMISTOTEKNIIKAN KANDIDAATIN TUTKINTO",
+        "institution": "Shanghai Dianji University",
+        "details": [
+          "Suoritti seitsemän kuukauden harjoittelun, joka keskittyi käyttäjätutkimukseen ja verkkosovelluskehitykseen.",
+          "Rakensi vahvan perusosaamisen ohjelmistokehityksen periaatteista.",
+          "Toteutti käytännön projekteja olio-ohjelmointikielillä ja tietojenkäsittelytieteen ydinkäsitteillä."
+        ],
+        "tags": ["JAVA (OOP)", "VERKKOKEHITYS", "KÄYTTÄJÄTUTKIMUS", "C-KIELI"]
+      }
+    ]
+  },
+  "testimonials": {
+    "title": "Suositukset",
+    "description": "Yhteistyökumppaneiden, asiakkaiden ja ohjaajien kokemuksia työskentelystä kanssani.",
+    "items": [
+      {
+        "name": "David Findlay",
+        "role": "Founder, FionStar",
+        "linkedinUrl": "https://www.linkedin.com/in/david-findlay-84002a2?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BOr1%2FKCBoQaym8EfoVZBRjQ%3D%3D",
+        "quote": "This is great, Victor. The look, feel, design, CRM, and coding for the assessment aside, you solved my biggest pain point: content editing. With the simplified WordPress backend, I can easily update content while the design framework stays intact."
+      },
+      {
+        "name": "Dr. Dorina Rajanen",
+        "role": "University Professor",
+        "linkedinUrl": "https://www.linkedin.com/in/dorina-rajanen-68b67213?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_recommendations_details%3BpwYls4EpS6eHmlnmWEs79A%3D%3D",
+        "quote": "Victor is reliable, systematic, and creative. He combines strong analytical thinking with a passion for design and development, delivering thoughtful, high-quality solutions. I highly recommend him."
+      },
+      {
+        "name": "Anjalee Wanigarathne",
+        "role": "UI | UX Designer",
+        "linkedinUrl": "https://www.linkedin.com/in/anj-wanigarathne?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BOr1%2FKCBoQaym8EfoVZBRjQ%3D%3D",
+        "quote": "Victor is a strong frontend developer with a solid understanding of UI and UX. He translates design concepts into effective interfaces, communicates clearly, and is a reliable team player."
+      }
+    ]
+  },
+  "contact": {
+    "title": "Rakennetaan jotain",
+    "description": "Avoin ammatilliselle yhteistyölle ja kehittäjärooleille, keskityn rakentamaan skaalautuvia ja käyttäjälähtöisiä tuotteita, jotka tuottavat todellista liiketoiminta-arvoa.",
+    "contacts": [
+      {
+        "id": "email",
+        "label": "Sähköposti",
+        "value": "contact@victorkevz.com",
+        "href": "mailto:contact@victorkevz.com"
+      },
+      {
+        "id": "phone",
+        "label": "Puhelin",
+        "value": "+358 40 463 9819",
+        "href": "tel:+358404639819"
+      },
+      {
+        "id": "linkedin",
+        "label": "LinkedIn",
+        "value": "Victor Kuwandira",
+        "href": "https://www.linkedin.com/in/victorkuwandira"
+      }
+    ],
+    "form": {
+      "labels": {
+        "firstName": "Etunimi",
+        "lastName": "Sukunimi",
+        "email": "Sähköpostiosoite",
+        "service": "Tarvittava palvelu",
+        "message": "Viestisi"
+      },
+      "placeholders": {
+        "firstName": "Victor",
+        "lastName": "Kuwandira",
+        "email": "hello@example.com",
+        "service": "Valitse palvelu",
+        "message": "Kerro projektistasi lyhyesti..."
+      },
+      "serviceOptions": [
+        {
+          "value": "headless-web-development",
+          "label": "Headless-verkkokehitys"
+        },
+        {
+          "value": "ux-design-research",
+          "label": "UX-suunnittelu ja -tutkimus"
+        },
+        {
+          "value": "custom-web-apps",
+          "label": "Räätälöidyt verkkosovellukset"
+        },
+        {
+          "value": "digital-strategy",
+          "label": "Digitaalinen kasvu ja strategia"
+        },
+        {
+          "value": "other",
+          "label": "Muu"
+        }
+      ],
+      "submitLabel": "Lähetä viesti",
+      "successMessage": "Kiitos! Viestisi on lähetetty.",
+      "errorMessage": "Jotain meni pieleen. Yritä uudelleen.",
+      "validation": {
+        "firstNameRequired": "Etunimi on pakollinen",
+        "lastNameRequired": "Sukunimi on pakollinen",
+        "emailRequired": "Sähköposti on pakollinen",
+        "emailInvalid": "Anna kelvollinen sähköpostiosoite",
+        "serviceRequired": "Valitse palvelu",
+        "messageRequired": "Viesti on pakollinen"
+      }
+    }
   }
 }

@@ -47,8 +47,7 @@
     "nav": {
       "home": "Home",
       "services": "Services",
-      "skills": "Skills",
-      "recommendations": "Recommendations",
+      "projects": "Projects",
       "contact": "Contact"
     },
     "cta": {
@@ -59,6 +58,8 @@
     "location": "Oulu, Finland",
     "label": "Web Developer",
     "title": "I am Victor.",
+    "imageAlt": "Portrait of Victor Kuwandira",
+    "scrollCta": "Scroll to services",
     "description": {
       "intro": "Frontend-focused web developer building ",
       "highlightUserCentered": "user-centered",
@@ -82,9 +83,9 @@
     }
   },
   "services": {
-    "title": "High-Performance Digital Solutions",
+    "title": "Digital Solutions",
     "description": "Building fast, reliable, and user-centric products designed to help your business grow and your team thrive.",
-    "imageCaption": "From business requirements to technical implementation.",
+    "imageAlt": "Service planning session",
     "ctaTitle": "Have a project in mind?",
     "ctaDescription": "I'm always looking for new challenges and opportunities to grow.",
     "items": [
@@ -129,5 +130,177 @@
         ]
       }
     ]
+  },
+  "experience": {
+    "header": {
+      "title": "CAREER PATH",
+      "subtitle": "A record of professional growth and academic excellence across global boundaries.",
+      "toggleOptions": {
+        "professional": "PROFESSIONAL",
+        "academic": "ACADEMIC"
+      }
+    },
+    "work": [
+      {
+        "dateRange": "DEC 2025 — PRESENT",
+        "location": "OULU, FINLAND",
+        "role": "JUNIOR DEVELOPER TRAINEE",
+        "company": "HeliosDigitech",
+        "achievements": [
+          "Developed headless WordPress sites achieving 96%+ Lighthouse scores.",
+          "Built a live content preview system using webhooks for real-time sync.",
+          "Increased user signups by 15% with Brevo automation and lead capture.",
+          "Translated business goals into technical solutions with the founder."
+        ],
+        "tags": ["NEXT.JS", "HEADLESS WORDPRESS", "REST API", "BREVO"]
+      },
+      {
+        "dateRange": "JULY 2021 — FEB 2022",
+        "location": "SHANGHAI, CHINA",
+        "role": "STUDENT INTERN",
+        "company": "SDJU (Shanghai Dianji University)",
+        "achievements": [
+          "Improved an internal web app for 200+ staff as part of a four-person Scrum team.",
+          "Reduced task completion time by 30% through targeted front-end enhancements.",
+          "Raised usability scores in pilot testing through rigorous user research."
+        ],
+        "tags": ["REACT", "UI/UX", "USER RESEARCH", "SCRUM"]
+      },
+      {
+        "dateRange": "JAN 2020 — SEP 2021",
+        "location": "ZIMBABWE",
+        "role": "CO-FOUNDER / PROJECT MANAGER",
+        "company": "Kevz Tech",
+        "achievements": [
+          "Led 100+ IoT system installations, improving operational efficiency for clients.",
+          "Managed e-commerce operations on Ecwid, processing 500+ orders.",
+          "Streamlined inventory and sales workflows to optimize business operations."
+        ],
+        "tags": ["IOT SYSTEMS", "E-COMMERCE", "ECWID", "OPERATIONS"]
+      }
+    ],
+    "education": [
+      {
+        "dateRange": "SEPT 2023 — JULY 2025",
+        "location": "OULU, FINLAND",
+        "degree": "MASTER'S DEGREE IN INFORMATION SYSTEMS",
+        "institution": "University of Oulu",
+        "details": [
+          "Gained experience across the full software development lifecycle through real-world projects.",
+          "Focused studies on human-computer interaction and business development.",
+          "Collaborated in agile teams, building a strong foundation in information systems."
+        ],
+        "tags": ["HCI", "SOFTWARE DEVELOPMENT", "UX DESIGN", "SDLC"]
+      },
+      {
+        "dateRange": "SEPT 2018 — JULY 2022",
+        "location": "SHANGHAI, CHINA",
+        "degree": "BACHELOR'S DEGREE IN SOFTWARE ENGINEERING",
+        "institution": "Shanghai Dianji University",
+        "details": [
+          "Completed a seven-month internship focused on user research and web app development.",
+          "Built a strong foundation in software development principles.",
+          "Hands-on projects with OOP languages and core computer science concepts."
+        ],
+        "tags": ["JAVA (OOP)", "WEB DEVELOPMENT", "USER RESEARCH", "C LANGUAGE"]
+      }
+    ]
+  },
+  "testimonials": {
+    "title": "Testimonials",
+    "description": "What collaborators, clients, and mentors say about working with me.",
+    "items": [
+      {
+        "name": "David Findlay",
+        "role": "Founder, FionStar",
+        "linkedinUrl": "https://www.linkedin.com/in/david-findlay-84002a2?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BOr1%2FKCBoQaym8EfoVZBRjQ%3D%3D",
+        "quote": "This is great, Victor. The look, feel, design, CRM, and coding for the assessment aside, you solved my biggest pain point: content editing. With the simplified WordPress backend, I can easily update content while the design framework stays intact."
+      },
+      {
+        "name": "Dr. Dorina Rajanen",
+        "role": "University Professor",
+        "linkedinUrl": "https://www.linkedin.com/in/dorina-rajanen-68b67213?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_recommendations_details%3BpwYls4EpS6eHmlnmWEs79A%3D%3D",
+        "quote": "Victor is reliable, systematic, and creative. He combines strong analytical thinking with a passion for design and development, delivering thoughtful, high-quality solutions. I highly recommend him."
+      },
+      {
+        "name": "Anjalee Wanigarathne",
+        "role": "UI | UX Designer",
+        "linkedinUrl": "https://www.linkedin.com/in/anj-wanigarathne?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BOr1%2FKCBoQaym8EfoVZBRjQ%3D%3D",
+        "quote": "Victor is a strong frontend developer with a solid understanding of UI and UX. He translates design concepts into effective interfaces, communicates clearly, and is a reliable team player."
+      }
+    ]
+  },
+  "contact": {
+    "title": "Let's build something",
+    "description": "Open to professional collaboration and engineering roles, focused on building scalable, user-centered products that deliver real business value.",
+    "contacts": [
+      {
+        "id": "email",
+        "label": "Email",
+        "value": "contact@victorkevz.com",
+        "href": "mailto:contact@victorkevz.com"
+      },
+      {
+        "id": "phone",
+        "label": "Phone",
+        "value": "+358 40 463 9819",
+        "href": "tel:+358404639819"
+      },
+      {
+        "id": "linkedin",
+        "label": "LinkedIn",
+        "value": "Victor Kuwandira",
+        "href": "https://www.linkedin.com/in/victorkuwandira"
+      }
+    ],
+    "form": {
+      "labels": {
+        "firstName": "First name",
+        "lastName": "Last name",
+        "email": "Email address",
+        "service": "Service needed",
+        "message": "Your message"
+      },
+      "placeholders": {
+        "firstName": "Victor",
+        "lastName": "Kuwandira",
+        "email": "hello@example.com",
+        "service": "Select service",
+        "message": "Tell me about your project details..."
+      },
+      "serviceOptions": [
+        {
+          "value": "headless-web-development",
+          "label": "Headless web development"
+        },
+        {
+          "value": "ux-design-research",
+          "label": "UX design & research"
+        },
+        {
+          "value": "custom-web-apps",
+          "label": "Custom web applications"
+        },
+        {
+          "value": "digital-strategy",
+          "label": "Digital strategy & growth"
+        },
+        {
+          "value": "other",
+          "label": "Other"
+        }
+      ],
+      "submitLabel": "Send message",
+      "successMessage": "Thanks! Your message has been sent.",
+      "errorMessage": "Something went wrong. Please try again.",
+      "validation": {
+        "firstNameRequired": "First name is required",
+        "lastNameRequired": "Last name is required",
+        "emailRequired": "Email is required",
+        "emailInvalid": "Please enter a valid email address",
+        "serviceRequired": "Please select a service",
+        "messageRequired": "Message is required"
+      }
+    }
   }
 }

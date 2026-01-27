@@ -148,9 +148,9 @@ export function Header({ locale }: HeaderProps) {
         fallback: "Services",
       },
       {
-        href: "#skills",
-        label: getTranslation(locale, "header.nav.skills"),
-        fallback: "Skills",
+        href: "#projects",
+        label: getTranslation(locale, "header.nav.projects"),
+        fallback: "Projects",
       },
       {
         href: "#contact",

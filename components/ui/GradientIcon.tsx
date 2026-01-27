@@ -4,12 +4,14 @@ interface GradientIconProps {
   Icon: ElementType;
   gradient: "gradient-primary" | "gradient-secondary";
   className?: string;
+  innerClassName?: string;
 }
 
 export function GradientIcon({
   Icon,
   gradient,
   className = "",
+  innerClassName = "bg-(--neutral-0)/80",
 }: GradientIconProps) {
   return (
     <span
@@ -18,7 +20,7 @@ export function GradientIcon({
     >
       <span
         aria-hidden="true"
-        className="flex items-center justify-center h-8 w-8 rounded-lg bg-(--neutral-0)/80"
+        className={`flex items-center justify-center h-8 w-8 rounded-lg ${innerClassName}`}
       >
         <Icon className="text-on-primary body-text-dark" fontSize="medium" />
       </span>

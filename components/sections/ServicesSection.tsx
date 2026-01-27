@@ -17,6 +17,7 @@ export default function ServicesSection({ locale }: ServicesSectionProps) {
   const services = getTranslation(locale, "services") as {
     title: string;
     description: string;
+    imageAlt: string;
     imageCaption: string;
     ctaTitle: string;
     ctaDescription: string;
@@ -46,7 +47,10 @@ export default function ServicesSection({ locale }: ServicesSectionProps) {
     >
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <header className="text-center max-w-2xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold heading-text-dark uppercase">
+          <h2
+            id="services-title"
+            className="outline-text-dark text-3xl sm:text-4xl lg:text-7xl font-semibold  uppercase"
+          >
             {services.title}
           </h2>
           <p className="mt-4 text-base sm:text-lg xl:text-xl body-text-dark">
@@ -55,10 +59,10 @@ export default function ServicesSection({ locale }: ServicesSectionProps) {
         </header>
 
         <div className="mt-20 grid gap-10 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,2fr)] items-stretch">
-          <figure className="rounded-[3rem] relative overflow-hidden bg-(--neutral-0)/90 h-full shadow-2xl shadow-yellow-500/30 border border-(--border-dark)">
+          <figure className="rounded-[3rem] relative overflow-hidden bg-(--neutral-0)/90 h-full border border-(--border-dark)">
             <Image
-              src="/services-image.png"
-              alt="Services"
+              src="/service-image1.png"
+              alt={services.imageAlt}
               width={800}
               height={420}
               className="w-full h-full object-cover"
@@ -104,7 +108,7 @@ export default function ServicesSection({ locale }: ServicesSectionProps) {
           <h3 className="text-2xl font-semibold heading-text-dark uppercase">
             {services.ctaTitle}
           </h3>
-          <p className="mt-2 text-base body-text-dark mb-10">
+          <p className="mt-1 text-base body-text-dark mb-5 text-center">
             {services.ctaDescription}
           </p>
           <CTALink href="#contact" label={ctaLabel} variant="primary" />

@@ -1,28 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  /* --dark-gradient: radial-gradient(
-    circle,
-    #060a14 0%,
-    #152349 55%,
-    #231e11 100%
-  ); */
   --dark-gradient: radial-gradient(
     circle,
     #060a14 0%,
     #152349 55%,
     #241f11 100%
   );
-  --light-gradient: radial-gradient(
-    circle,
-    #ffffff 0%,
-    #fffed6 55%,
-    #e1faff 100%
-  );
+
   --light-gradient: radial-gradient(
     circle,
     #f0fdff 0%,
-    #e1faff 55%,
+    #e1faff 25%,
     #ffffec 100%
   );
   --gradient-primary: linear-gradient(90deg, #0cc0df 0%, #ffde59 100%);
@@ -38,21 +27,29 @@
   --neutral-600: #525252;
   --neutral-700: #404040;
   --neutral-800: #262626;
-  --neutral-900: #08080f;
+  --neutral-900: #0e1424;
   --neutral-1000: #000000;
+  --error: #f17b7b;
+
+  /* Navy scale (dark -> light) */
+  --navy-1000: #030711;
+  --navy-900: #0b1224;
+  --navy-800: #131c38;
+  --navy-700: #1a264a;
+  --navy-600: #23335f;
+  --navy-500: #2f447a;
+  --navy-400: #3f5896;
+  --navy-300: #5a73b1;
+  --navy-200: #8ea0cc;
+  --navy-100: #dfe5f4;
 
   /*
     Semantic tokens (derived from scales).
     Using color-mix keeps these values tied to the neutral scale instead of hardcoding RGBA.
   */
-  --body-text-light: color-mix(in srgb, var(--neutral-0) 88%, transparent);
-  --body-text-light-muted: color-mix(
-    in srgb,
-    var(--neutral-0) 72%,
-    transparent
-  );
+  --body-text-light: var(--neutral-0);
+  --body-text-light-muted: var(--navy-200);
   --heading-text-light: var(--neutral-0);
-
   --body-text-dark: color-mix(in srgb, var(--neutral-1000) 86%, transparent);
   --body-text-dark-muted: color-mix(
     in srgb,
@@ -60,6 +57,7 @@
     transparent
   );
   --heading-text-dark: color-mix(in srgb, var(--neutral-1000) 92%, transparent);
+  --error-muted: color-mix(in srgb, var(--error) 60%, transparent);
 
   --text-on-primary: var(--neutral-1000);
   --text-on-secondary: var(--neutral-0);
@@ -89,6 +87,8 @@
   --surface-panel: var(--panel-dark);
   --cta-text: var(--text-on-primary);
   --cta-shadow: var(--shadow-elevated);
+  --light-background: var(--neutral-0);
+  --dark-background: var(--neutral-900);
 }
 
 *,
@@ -122,6 +122,9 @@ select {
 }
 .bg-light-gradient {
   background: var(--light-gradient);
+}
+.hover-surface-glass-dark:hover {
+  background: var(--surface-glass-dark) !important;
 }
 .text-gradient {
   background: var(--gradient-primary);
@@ -168,7 +171,13 @@ select {
 .heading-text-dark {
   color: var(--heading-text-dark);
 }
-
+.outline-text-dark {
+  font-weight: 900;
+  color: transparent;
+  -webkit-text-stroke: 1.8px var(--neutral-900);
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+}
 .text-on-primary {
   color: var(--text-on-primary);
 }
@@ -245,4 +254,10 @@ select {
 
 .animate-arrow-down {
   animation: arrowDown 1.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-arrow-down {
+    animation: none;
+  }
 }

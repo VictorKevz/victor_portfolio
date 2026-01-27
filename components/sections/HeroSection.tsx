@@ -23,12 +23,12 @@ function LocationPill({ location }: LocationPillProps) {
       className="inline-flex rounded-full p-px"
       style={{ background: "var(--gradient-secondary)" }}
     >
-      <div className="flex items-center gap-2 rounded-full bg-(--neutral-0)/80 px-4 py-2">
+      <div className="flex items-center gap-1.5 rounded-full bg-(--neutral-0)/80 px-3 py-1">
         <RoomOutlinedIcon
           className="text-on-primary body-text-dark"
-          fontSize="small"
+          sx={{ fontSize: "0.85rem" }}
         />
-        <span className="text-xs font-semibold uppercase tracking-[0.2em] text-on-primary body-text-dark">
+        <span className="text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-on-primary body-text-dark">
           {location}
         </span>
       </div>
@@ -45,6 +45,8 @@ export default function HeroSection({ locale }: HeroSectionProps) {
   const badgeTitle = getTranslation(locale, "hero.badge.title");
   const badgeItems = getTranslation(locale, "hero.badge.items");
   const location = getTranslation(locale, "hero.location");
+  const heroImageAlt = getTranslation(locale, "hero.imageAlt");
+  const scrollCta = getTranslation(locale, "hero.scrollCta");
 
   const badgeList = Array.isArray(badgeItems)
     ? (badgeItems.filter(
@@ -72,7 +74,7 @@ export default function HeroSection({ locale }: HeroSectionProps) {
               <div className="h-22 w-22 rounded-full bg-gradient-primary flex items-center justify-center">
                 <Image
                   src="/victor_no_bg.png"
-                  alt="Victor Kuwandira portrait"
+                  alt={heroImageAlt as string}
                   width={75}
                   height={75}
                   className="h-full w-full rounded-full object-cover"
@@ -103,16 +105,18 @@ export default function HeroSection({ locale }: HeroSectionProps) {
               )}
             </p>
             <LocationPill location={location as string} />
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-8 flex flex-col sm:flex-row gap-3">
               <CTALink
                 href="#projects"
                 label={primaryCta as string}
                 variant="primary"
+                className="w-full sm:w-auto justify-center"
               />
               <CTALink
                 href="#contact"
                 label={secondaryCta as string}
                 variant="secondary"
+                className="w-full sm:w-auto justify-center"
               />
             </div>
           </div>
@@ -131,7 +135,7 @@ export default function HeroSection({ locale }: HeroSectionProps) {
         {/* Large Screen Arrow Down */}
         <Link
           href="#services"
-          aria-label="Scroll to services"
+          aria-label={scrollCta as string}
           className="hidden 2xl:flex absolute bottom-5 left-8 w-22 h-22 items-center justify-center surface-glass rounded-full overflow-hidden"
         >
           <span className="flex items-center justify-center animate-arrow-down">
@@ -143,7 +147,7 @@ export default function HeroSection({ locale }: HeroSectionProps) {
       <div className="hidden md:flex absolute right-0 bottom-0 w-full h-full items-end justify-end pointer-events-none">
         <Image
           src="/victor_no_bg.png"
-          alt="Victor Kuwandira portrait"
+          alt={heroImageAlt as string}
           width={1000}
           height={900}
           priority

@@ -1,16 +1,42 @@
 import { NextRequest, NextResponse } from "next/server";
-import { randomBytes } from "crypto";
 
 interface ContactFormData {
   firstName: string;
   lastName: string;
   email: string;
-  message?: string;
+  service: string;
+  message: string;
   locale?: string;
 }
 
-function generateToken(): string {
-  return randomBytes(32).toString("hex");
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
+const RATE_LIMIT_MAX = 5;
+const rateLimitStore = new Map<string, { count: number; resetAt: number }>();
+
+function getClientIp(request: NextRequest): string {
+  const forwardedFor = request.headers.get("x-forwarded-for");
+  if (forwardedFor) {
+    return forwardedFor.split(",")[0]?.trim() || "unknown";
+  }
+  return request.headers.get("x-real-ip") || "unknown";
+}
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const entry = rateLimitStore.get(ip);
+
+  if (!entry || entry.resetAt <= now) {
+    rateLimitStore.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
+    return false;
+  }
+
+  if (entry.count >= RATE_LIMIT_MAX) {
+    return true;
+  }
+
+  entry.count += 1;
+  rateLimitStore.set(ip, entry);
+  return false;
 }
 
 function sanitizeText(
@@ -83,7 +109,7 @@ function validateFormData(data: ContactFormData): {
     errors.push("Invalid email format");
   }
 
-  if (data.message && typeof data.message !== "string") {
+  if (typeof data.message !== "string") {
     errors.push("Message must be a string");
   }
 
@@ -99,7 +125,21 @@ function validateFormData(data: ContactFormData): {
     errors.push("Email is too long (max 254 characters)");
   }
 
-  if (data.message && data.message.length > 5000) {
+  if (
+    !data.service ||
+    typeof data.service !== "string" ||
+    data.service.trim().length === 0
+  ) {
+    errors.push("Service is required");
+  }
+
+  if (data.service && data.service.length > 120) {
+    errors.push("Service is too long (max 120 characters)");
+  }
+
+  if (!data.message || data.message.trim().length === 0) {
+    errors.push("Message is required");
+  } else if (data.message.length > 5000) {
     errors.push("Message is too long (max 5000 characters)");
   }
 
@@ -110,14 +150,19 @@ function validateFormData(data: ContactFormData): {
 }
 
 async function submitToBrevo(
-  formData: ContactFormData,
-  token: string
+  formData: ContactFormData
 ): Promise<{ success: boolean; updated?: boolean; errorCode?: string }> {
   const brevoApiKey = process.env.BREVO_API_KEY;
   const brevoApiUrl = process.env.BREVO_API_URL || "https://api.brevo.com/v3";
-  const brevoListId = process.env.BREVO_LIST_ID
-    ? parseInt(process.env.BREVO_LIST_ID, 10)
+  const brevoListIdRaw =
+    process.env.BREVO_LIST_ID || process.env.BREVO_PROJECT_ID;
+  const brevoListId = brevoListIdRaw
+    ? Number.parseInt(brevoListIdRaw, 10)
     : undefined;
+  const brevoListIdSafe =
+    typeof brevoListId === "number" && Number.isFinite(brevoListId)
+      ? brevoListId
+      : undefined;
 
   if (!brevoApiKey) {
     console.error("BREVO_API_KEY environment variable is not set");
@@ -128,29 +173,22 @@ async function submitToBrevo(
   }
 
   try {
-    const submissionToken = token;
-
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
     const language =
       formData.locale === "fi" || formData.locale === "en"
         ? formData.locale
         : "en";
-    const authenticatedUrl = siteUrl
-      ? `${siteUrl}/${language}`
-      : `/${language}`;
 
     const brevoPayload = {
       email: formData.email,
       attributes: {
         FIRSTNAME: formData.firstName,
         LASTNAME: formData.lastName,
+        SERVICE: formData.service,
         MESSAGE: formData.message || "",
-        SUBMISSION_TOKEN: submissionToken,
-        AUTHENTICATED_URL: authenticatedUrl,
         LANGUAGE: language.toUpperCase(),
         SUBMITTED_AT: new Date().toISOString(),
       },
-      ...(brevoListId ? { listIds: [brevoListId] } : {}),
+      ...(brevoListIdSafe ? { listIds: [brevoListIdSafe] } : {}),
       updateEnabled: true,
     };
 
@@ -170,9 +208,7 @@ async function submitToBrevo(
       if (response.status === 409) {
         const updatePayload = {
           attributes: brevoPayload.attributes,
-          ...(brevoListId
-            ? { listIds: [parseInt(process.env.BREVO_LIST_ID!, 10)] }
-            : {}),
+          ...(brevoListIdSafe ? { listIds: [brevoListIdSafe] } : {}),
         };
 
         const updateResponse = await fetch(
@@ -221,7 +257,22 @@ async function submitToBrevo(
 
 export async function POST(request: NextRequest) {
   try {
+    const clientIp = getClientIp(request);
+    if (isRateLimited(clientIp)) {
+      return NextResponse.json(
+        { success: false, errorCode: "RATE_LIMITED" },
+        { status: 429 }
+      );
+    }
+
     const body = await request.json();
+    if (typeof body?.company === "string" && body.company.trim().length > 0) {
+      return NextResponse.json(
+        { success: true, message: "Form submitted successfully" },
+        { status: 200 }
+      );
+    }
+
     const formData: ContactFormData = {
       firstName: sanitizeText(body.firstName, {
         maxLen: 100,
@@ -235,6 +286,10 @@ export async function POST(request: NextRequest) {
         maxLen: 254,
         preserveNewlines: false,
       }).toLowerCase(),
+      service: sanitizeText(body.service, {
+        maxLen: 120,
+        preserveNewlines: false,
+      }),
       message: sanitizeText(body.message, {
         maxLen: 5000,
         preserveNewlines: true,
@@ -254,8 +309,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const token = generateToken();
-    const brevoResult = await submitToBrevo(formData, token);
+    const brevoResult = await submitToBrevo(formData);
 
     if (!brevoResult.success) {
       return NextResponse.json(
