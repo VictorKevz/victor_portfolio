@@ -172,6 +172,7 @@ export function Header({ locale }: HeaderProps) {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeHref, setActiveHref] = useState(navItems[0]?.href ?? "#home");
+  const [isScrolled, setIsScrolled] = useState(false);
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
 
   useEffect(() => {
@@ -207,10 +208,54 @@ export function Header({ locale }: HeaderProps) {
     return () => observer.disconnect();
   }, [navItems]);
 
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const handleScroll = () => setIsScrolled(window.scrollY > 0);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    if (typeof document === "undefined") return;
+
+    const handleAnchorClick = (event: MouseEvent) => {
+      const target = event.target as HTMLElement | null;
+      const anchor = target?.closest?.(
+        'a[href^="#"]',
+      ) as HTMLAnchorElement | null;
+      if (!anchor) return;
+
+      const hash = anchor.getAttribute("href");
+      if (!hash || hash === "#") return;
+
+      const id = hash.replace("#", "");
+      const section = document.getElementById(id);
+      if (!section) return;
+
+      event.preventDefault();
+
+      const header = document.querySelector("header");
+      const offset = header ? header.getBoundingClientRect().height : 0;
+      const top =
+        section.getBoundingClientRect().top + window.scrollY - offset - 8;
+
+      window.history.pushState(null, "", hash);
+      window.scrollTo({ top, behavior: "smooth" });
+    };
+
+    document.addEventListener("click", handleAnchorClick);
+    return () => document.removeEventListener("click", handleAnchorClick);
+  }, []);
+
   return (
-    <header className="w-full sticky top-0 left-0 z-20">
+    <header
+      className={`w-full sticky top-0 left-0 z-20 h-18 transition ${
+        isScrolled ? "backdrop-blur-xs bg-(--navy-1000)/50" : ""
+      }`}
+    >
       <nav
-        className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex items-center justify-between gap-4"
+        className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between gap-4"
         aria-label="Main navigation"
       >
         <Logo
@@ -225,10 +270,10 @@ export function Header({ locale }: HeaderProps) {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className={`px-3 text-xs tracking-[0.2em] uppercase transition-colors ${
+                  className={`px-3 text-xs tracking-[0.2em] uppercase transition-colors h-8 inline-flex items-center justify-center rounded-full text-(--neutral-0) ${
                     activeHref === item.href
-                      ? "bg-gradient-primary cta rounded-full h-8 flex items-center justify-center"
-                      : "link-muted"
+                      ? "bg-gradient-primary cta "
+                      : "bg-transparent primary-cta hover:text-(--text-on-primary)"
                   }`}
                   aria-current={activeHref === item.href ? "page" : undefined}
                 >
@@ -240,7 +285,11 @@ export function Header({ locale }: HeaderProps) {
         </nav>
 
         <div className="hidden lg:flex items-center gap-3">
-          <CTALink href="#projects" label={ctaLabel as string} variant="primary" />
+          <CTALink
+            href="#projects"
+            label={ctaLabel as string}
+            variant="primary"
+          />
           <div className="relative group">
             <button
               type="button"

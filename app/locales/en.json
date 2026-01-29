@@ -161,25 +161,35 @@
         "project_name": "Fion Star",
         "project_title": "Headless Website & Assessment MVP",
         "description": "Designed and built a headless system translating business goals into a minimal, high-performance assessment-driven MVP with full client content control.",
-        "images": [
+        "media": [
           {
-            "src": "/fionstar-2/01-home-page.png",
+            "type": "video",
+            "src": "/fionstar/01-home.mp4",
+            "poster": "/fionstar/01-home-page.webp",
             "alt": "Fion Star homepage hero layout preview"
           },
           {
-            "src": "/fionstar-2/02-survery-form.png",
+            "type": "video",
+            "src": "/fionstar/05-survery-form.mp4",
+            "poster": "/fionstar/02-survery-form.webp",
             "alt": "Fion Star assessment survey form flow"
           },
           {
-            "src": "/fionstar-2/03-service-page.png",
+            "type": "video",
+            "src": "/fionstar/03-service-page.mp4",
+            "poster": "/fionstar/03-service-page.webp",
             "alt": "Fion Star service page content layout"
           },
           {
-            "src": "/fionstar-2/04-contact-modal.png",
+            "type": "video",
+            "src": "/fionstar/02-contact-modal.mp4",
+            "poster": "/fionstar/04-contact-modal.webp",
             "alt": "Fion Star contact modal interface"
           },
           {
-            "src": "/fionstar-2/05-12-week-project.png",
+            "type": "video",
+            "src": "/fionstar/04-12-week-project.mp4",
+            "poster": "/fionstar/05-12-week-project.webp",
             "alt": "Fion Star 12-week project timeline overview"
           }
         ],
@@ -202,7 +212,7 @@
         "project_name": "VCTR AI Assistant",
         "project_title": "AI-Powered Chatbot System",
         "description": "Built a full-stack AI assistant focused on structured data handling, faster response times, and reliable user interactions.",
-        "images": [],
+        "media": [],
         "tech_stack": ["React", "Supabase", "Vercel AI SDK"],
         "results": {
           "performance_lighthouse": null,
@@ -225,7 +235,7 @@
         "project_name": "FEM Weather App",
         "project_title": "Hackathon Weather Application",
         "description": "Rapidly built and shipped a functional weather application under hackathon constraints, focusing on clean UI and real-time data handling.",
-        "images": [],
+        "media": [],
         "tech_stack": ["React", "API Integration", "CSS"],
         "results": {
           "performance_lighthouse": null,
@@ -245,7 +255,7 @@
         "project_name": "Siili Solutions",
         "project_title": "Academic UX & Product Design Project",
         "description": "University-industry project focused on UX thinking, product structure, and enterprise-level design considerations.",
-        "images": [],
+        "media": [],
         "tech_stack": ["UX Design", "Product Thinking", "Figma"],
         "results": {
           "performance_lighthouse": null,

@@ -2,14 +2,10 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { ImageCarousel } from "./projects/ImageCarousel";
-import { ProjectLinksBar } from "./projects/ProjectLinksBar";
-import { ResultsBlock } from "./projects/ResultsBlock";
-import type {
-  ProjectsLabels,
-  ProjectItem,
-  SlideItem,
-} from "./projects/types";
+import { ImageCarousel } from "@/components/sections/projects/ImageCarousel";
+import { ProjectLinksBar } from "@/components/sections/projects/ProjectLinksBar";
+import { ResultsBlock } from "@/components/sections/projects/ResultsBlock";
+import type { ProjectsLabels, ProjectItem, SlideItem } from "./projects/types";
 
 interface ProjectsListClientProps {
   projects: ProjectItem[];
@@ -17,11 +13,15 @@ interface ProjectsListClientProps {
   sectionId: string;
 }
 
-function buildSlides(images: ProjectItem["images"], placeholderLabel: string): SlideItem[] {
-  if (images.length > 0) {
-    return images.map((image) => ({ ...image, isPlaceholder: false }));
+function buildSlides(
+  media: ProjectItem["media"],
+  placeholderLabel: string,
+): SlideItem[] {
+  if (media.length > 0) {
+    return media.map((item) => ({ ...item, isPlaceholder: false }));
   }
   return Array.from({ length: 4 }, (_, index) => ({
+    type: "image",
     src: `placeholder-${index + 1}`,
     alt: placeholderLabel,
     isPlaceholder: true,
@@ -36,10 +36,18 @@ export default function ProjectsListClient({
   const prefersReducedMotion = useReducedMotion();
   const shouldReduceMotion = Boolean(prefersReducedMotion);
   const [activeSlides, setActiveSlides] = useState<Record<number, number>>({});
+  const [slideDirections, setSlideDirections] = useState<
+    Record<number, 1 | -1>
+  >({});
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
   const [showAllProjects, setShowAllProjects] = useState(false);
   const prevShowAllRef = useRef(showAllProjects);
+  const activeSlidesRef = useRef(activeSlides);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  useEffect(() => {
+    activeSlidesRef.current = activeSlides;
+  }, [activeSlides]);
 
   useEffect(() => {
     if (projects.length === 0 || prefersReducedMotion) {
@@ -55,15 +63,43 @@ export default function ProjectsListClient({
     }
 
     intervalRef.current = setInterval(() => {
-      setActiveSlides((prev) => {
-        const nextState: Record<number, number> = { ...prev };
+      const currentSlides = activeSlidesRef.current;
+      setSlideDirections((prevDirections) => {
+        const nextDirections: Record<number, 1 | -1> = { ...prevDirections };
+        const nextSlides: Record<number, number> = { ...currentSlides };
+
         projects.forEach((project, index) => {
-          const slides = buildSlides(project.images ?? [], labels.imagePlaceholder);
+          const slides = buildSlides(
+            project.media ?? [],
+            labels.imagePlaceholder,
+          );
           const totalSlides = slides.length;
-          const current = nextState[index] ?? 0;
-          nextState[index] = (current + 1) % totalSlides;
+          const current = nextSlides[index] ?? 0;
+          const direction = nextDirections[index] ?? 1;
+
+          if (totalSlides <= 1) {
+            nextSlides[index] = current;
+            nextDirections[index] = 1;
+            return;
+          }
+
+          if (direction === 1 && current >= totalSlides - 1) {
+            nextDirections[index] = -1;
+            nextSlides[index] = current - 1;
+            return;
+          }
+
+          if (direction === -1 && current <= 0) {
+            nextDirections[index] = 1;
+            nextSlides[index] = current + 1;
+            return;
+          }
+
+          nextSlides[index] = current + direction;
         });
-        return nextState;
+
+        setActiveSlides(nextSlides);
+        return nextDirections;
       });
     }, 4500);
 
@@ -115,6 +151,7 @@ export default function ProjectsListClient({
 
   const handleSlideChange = (projectIndex: number, nextIndex: number) => {
     setActiveSlides((prev) => ({ ...prev, [projectIndex]: nextIndex }));
+    setSlideDirections((prev) => ({ ...prev, [projectIndex]: 1 }));
   };
 
   const visibleProjects = useMemo(
@@ -122,9 +159,15 @@ export default function ProjectsListClient({
     [projects, showAllProjects],
   );
 
-  const springTransition = { type: "spring", stiffness: 180, damping: 22 } as const;
+  const springTransition = {
+    type: "spring",
+    stiffness: 180,
+    damping: 22,
+  } as const;
   const reducedTransition = { duration: 0 } as const;
-  const layoutTransition = prefersReducedMotion ? reducedTransition : springTransition;
+  const layoutTransition = prefersReducedMotion
+    ? reducedTransition
+    : springTransition;
 
   return (
     <>
@@ -135,13 +178,26 @@ export default function ProjectsListClient({
       >
         <AnimatePresence initial={false} mode="popLayout">
           {visibleProjects.map((project, projectIndex) => {
-            const slides = buildSlides(project.images ?? [], labels.imagePlaceholder);
+            const slides = buildSlides(
+              project.media ?? [],
+              labels.imagePlaceholder,
+            );
             const totalSlides = slides.length;
             const activeIndex = Math.min(
               activeSlides[projectIndex] ?? 0,
               totalSlides - 1,
             );
-            const baseImage = slides.find((slide) => !slide.isPlaceholder)?.src;
+            const baseImage = slides.find((slide) => {
+              if (slide.isPlaceholder) {
+                return false;
+              }
+              if (slide.type === "image") {
+                return Boolean(slide.src);
+              }
+              return Boolean(slide.poster);
+            });
+            const baseImageSrc =
+              baseImage?.type === "video" ? baseImage.poster : baseImage?.src;
             const performance = project.results.performance_lighthouse;
             const accessibility = project.results.accessibility_lighthouse;
             const bestPractices = project.results.best_practices_lighthouse;
@@ -195,31 +251,44 @@ export default function ProjectsListClient({
                       </div>
 
                       {hasResults ? (
-                        <ResultsBlock labels={labels} results={project.results} />
+                        <ResultsBlock
+                          labels={labels}
+                          results={project.results}
+                        />
                       ) : null}
                     </div>
 
                     <ImageCarousel
                       slides={slides}
                       activeIndex={activeIndex}
-                      baseImage={baseImage}
+                      baseImage={baseImageSrc}
                       labels={labels}
                       prefersReducedMotion={shouldReduceMotion}
                       onPrev={() => {
                         setActiveSlides((prev) => {
                           const current = prev[projectIndex] ?? 0;
-                          const next = (current - 1 + totalSlides) % totalSlides;
+                          const next = Math.max(current - 1, 0);
                           return { ...prev, [projectIndex]: next };
                         });
+                        setSlideDirections((prev) => ({
+                          ...prev,
+                          [projectIndex]: -1,
+                        }));
                       }}
                       onNext={() => {
                         setActiveSlides((prev) => {
                           const current = prev[projectIndex] ?? 0;
-                          const next = (current + 1) % totalSlides;
+                          const next = Math.min(current + 1, totalSlides - 1);
                           return { ...prev, [projectIndex]: next };
                         });
+                        setSlideDirections((prev) => ({
+                          ...prev,
+                          [projectIndex]: 1,
+                        }));
                       }}
-                      onDot={(index) => handleSlideChange(projectIndex, index)}
+                      onDot={(index: number) =>
+                        handleSlideChange(projectIndex, index)
+                      }
                       onHoverStart={() => setHoveredProject(projectIndex)}
                       onHoverEnd={() => setHoveredProject(null)}
                     />

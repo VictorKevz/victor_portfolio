@@ -3,9 +3,10 @@
 :root {
   --dark-gradient: radial-gradient(
     circle,
-    #060a14 0%,
-    #152349 55%,
-    #241f11 100%
+    #0a1122 0%,
+    #0f1d41 20%,
+    #051a1e 75%,
+    #221d0ee1 100%
   );
 
   --light-gradient: radial-gradient(
@@ -96,6 +97,10 @@
   --cta-shadow: var(--shadow-elevated);
   --light-background: var(--neutral-0);
   --dark-background: var(--neutral-900);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 *,

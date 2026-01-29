@@ -36,7 +36,7 @@ export default function ProjectsSection({ locale }: ProjectsSectionProps) {
       project_name: string;
       project_title: string;
       description: string;
-      images: Array<{ src: string; alt: string }>;
+      media: Array<{ type: "image" | "video"; src: string; alt: string; poster?: string }>;
       tech_stack: string[];
       results: {
         performance_lighthouse: string | null;

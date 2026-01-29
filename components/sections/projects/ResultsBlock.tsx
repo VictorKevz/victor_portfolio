@@ -32,15 +32,29 @@ export function ResultsBlock({ labels, results }: ResultsBlockProps) {
           </h4>
           <div className="mt-4 flex flex-wrap items-center gap-6">
             {performance ? (
-              <ScoreRing label={labels.performance} score={performance} />
+              <ScoreRing
+                label={labels.performance}
+                score={performance}
+                variant="primary"
+              />
             ) : null}
             {accessibility ? (
-              <ScoreRing label={labels.accessibility} score={accessibility} />
+              <ScoreRing
+                label={labels.accessibility}
+                score={accessibility}
+                variant="secondary"
+              />
             ) : null}
             {bestPractices ? (
-              <ScoreRing label={labels.bestPractices} score={bestPractices} />
+              <ScoreRing
+                label={labels.bestPractices}
+                score={bestPractices}
+                variant="primary"
+              />
             ) : null}
-            {seo ? <ScoreRing label={labels.seo} score={seo} /> : null}
+            {seo ? (
+              <ScoreRing label={labels.seo} score={seo} variant="secondary" />
+            ) : null}
           </div>
         </div>
       ) : null}

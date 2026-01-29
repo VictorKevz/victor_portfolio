@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { SkipLink } from "@/components/layout/SkipLink";
+import { HeaderWrapper } from "@/components/layout/HeaderWrapper";
 import { Footer } from "@/components/layout/Footer";
 import { isValidLocale, type Locale } from "@/lib/i18n/config";
 import { siteConfig } from "@/config/site.config";
@@ -58,6 +59,7 @@ export default async function LocaleLayout({
   return (
     <>
       <SkipLink />
+      <HeaderWrapper locale={locale as Locale} />
       <main id="main-content" className="min-h-screen">
         {children}
       </main>

@@ -65,9 +65,8 @@ export default function HeroSection({ locale }: HeroSectionProps) {
     <div className="relative w-full ">
       <section
         id="home"
-        className="min-h-dvh max-w-screen-2xl mx-auto w-full relative overflow-hidden flex flex-col justify-between 2xl:justify-start 2xl:items-center"
+        className="min-h-[calc(100dvh-4.5rem)] pt-20 max-w-screen-2xl mx-auto w-full relative overflow-hidden flex flex-col justify-between 2xl:justify-start 2xl:items-center"
       >
-        <HeaderWrapper locale={locale} />
         <div className="relative z-10  w-full px-4 sm:px-6 lg:px-8 py-10 2xl:mt-20">
           <div className="max-w-xl ">
             <div className="md:hidden mb-6">
@@ -151,7 +150,7 @@ export default function HeroSection({ locale }: HeroSectionProps) {
           width={1000}
           height={900}
           priority
-          className="w-full h-full object-cover object-bottom-right lg:w-[55vw] 2xl:w-[50vw]"
+          className="w-full h-full object-cover object-bottom-right lg:w-[50vw] 2xl:w-[50vw]"
         />
       </div>
     </div>

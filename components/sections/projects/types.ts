@@ -16,9 +16,11 @@ export interface ProjectsLabels {
   showLess: string;
 }
 
-export interface ProjectImage {
+export interface ProjectMedia {
+  type: "image" | "video";
   src: string;
   alt: string;
+  poster?: string;
 }
 
 export interface ProjectLinks {
@@ -40,12 +42,12 @@ export interface ProjectItem {
   project_name: string;
   project_title: string;
   description: string;
-  images: ProjectImage[];
+  media: ProjectMedia[];
   tech_stack: string[];
   results: ProjectResults;
   links: ProjectLinks;
 }
 
-export interface SlideItem extends ProjectImage {
+export interface SlideItem extends ProjectMedia {
   isPlaceholder: boolean;
 }

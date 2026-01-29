@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
@@ -32,13 +33,31 @@ export function ImageCarousel({
   onHoverEnd,
 }: ImageCarouselProps) {
   const totalSlides = slides.length;
-  const trackWidth = `${totalSlides * 100}%`;
-  const slideWidth = `${100 / totalSlides}%`;
+  const videoRefs = useRef<Array<HTMLVideoElement | null>>([]);
+
+  useEffect(() => {
+    videoRefs.current.forEach((video, index) => {
+      if (!video) {
+        return;
+      }
+      if (index === activeIndex) {
+        void video.play().catch(() => undefined);
+      } else {
+        video.pause();
+        video.currentTime = 0;
+      }
+    });
+  }, [activeIndex]);
+
+  const transition =
+    prefersReducedMotion
+      ? ({ duration: 0 } as const)
+      : ({ duration: 0.35, ease: "easeInOut" } as const);
 
   return (
     <div className="h-64 sm:h-80 lg:h-full min-w-0">
       <div
-        className="relative rounded-4xl overflow-hidden border border-(--border-dark) bg-(--neutral-100) h-full"
+        className="relative rounded-4xl overflow-hidden bg-(--neutral-0)/90 h-full"
         style={
           baseImage
             ? {
@@ -52,46 +71,47 @@ export function ImageCarousel({
         onMouseLeave={onHoverEnd}
       >
         <div className="relative h-full w-full overflow-hidden">
-          <motion.div
-            className="flex h-full"
-            style={{ width: trackWidth }}
-            animate={
-              prefersReducedMotion
-                ? undefined
-                : { x: `-${activeIndex * (100 / totalSlides)}%` }
-            }
-            transition={{ duration: 0.35, ease: "easeInOut" }}
-          >
-            {slides.map((slide, index) => (
-              <div
-                key={`${slide.src}-${index}`}
-                className="relative h-full shrink-0"
-                style={{ width: slideWidth }}
-              >
-                {slide.isPlaceholder ? (
-                  <div className="h-full w-full flex items-center justify-center bg-(--neutral-100)">
-                    <span className="text-[0.6rem] uppercase tracking-[0.35em] heading-text-dark/70">
-                      {labels.imagePlaceholder}
-                    </span>
-                  </div>
-                ) : (
-                  <>
-                    <Image
-                      src={slide.src}
-                      alt={slide.alt}
-                      fill
-                      sizes="(min-width: 1024px) 40vw, 100vw"
-                      className="object-cover"
-                    />
-                    <span
-                      className="absolute inset-0 pointer-events-none"
-                      style={{ background: "var(--dark-gradient)", opacity: 0.3 }}
-                    />
-                  </>
-                )}
-              </div>
-            ))}
-          </motion.div>
+          {slides.map((slide, index) => (
+            <motion.div
+              key={`${slide.src}-${index}`}
+              className="absolute inset-0 h-full w-full"
+              initial={false}
+              animate={index === activeIndex ? { opacity: 1 } : { opacity: 0 }}
+              transition={transition}
+              style={{ pointerEvents: index === activeIndex ? "auto" : "none" }}
+            >
+              {slide.isPlaceholder ? (
+                <div className="h-full w-full flex items-center justify-center bg-(--neutral-100)">
+                  <span className="text-[0.6rem] uppercase tracking-[0.35em] heading-text-dark/70">
+                    {labels.imagePlaceholder}
+                  </span>
+                </div>
+              ) : slide.type === "video" ? (
+                <video
+                  ref={(element) => {
+                    videoRefs.current[index] = element;
+                  }}
+                  className="h-full w-full object-cover"
+                  src={slide.src}
+                  poster={slide.poster}
+                  muted
+                  loop
+                  playsInline
+                  autoPlay={index === activeIndex}
+                  preload={index === 0 ? "auto" : "metadata"}
+                  aria-label={slide.alt}
+                />
+              ) : (
+                <Image
+                  src={slide.src}
+                  alt={slide.alt}
+                  fill
+                  sizes="(min-width: 1024px) 40vw, 100vw"
+                  className="object-cover"
+                />
+              )}
+            </motion.div>
+          ))}
         </div>
 
         {totalSlides > 1 ? (

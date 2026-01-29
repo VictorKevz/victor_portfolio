@@ -161,25 +161,35 @@
         "project_name": "Fion Star",
         "project_title": "Headless-verkkosivusto ja arviointi-MVP",
         "description": "Suunnittelin ja rakensin headless-järjestelmän, joka käänsi liiketoimintatavoitteet pelkistettyyn, suorituskykyiseen arviointi-MVP:hen, jossa asiakkaalla on täysi sisällönhallinta.",
-        "images": [
+        "media": [
           {
-            "src": "/fionstar-2/01-home-page.png",
+            "type": "video",
+            "src": "/fionstar/01-home.mp4",
+            "poster": "/fionstar/01-home-page.webp",
             "alt": "Fion Star -etusivun hero-asettelu"
           },
           {
-            "src": "/fionstar-2/02-survery-form.png",
+            "type": "video",
+            "src": "/fionstar/05-survery-form.mp4",
+            "poster": "/fionstar/02-survery-form.webp",
             "alt": "Fion Star -arviointikyselyn lomakenäkymä"
           },
           {
-            "src": "/fionstar-2/03-service-page.png",
+            "type": "video",
+            "src": "/fionstar/03-service-page.mp4",
+            "poster": "/fionstar/03-service-page.webp",
             "alt": "Fion Star -palvelusivun sisältöasettelu"
           },
           {
-            "src": "/fionstar-2/04-contact-modal.png",
+            "type": "video",
+            "src": "/fionstar/02-contact-modal.mp4",
+            "poster": "/fionstar/04-contact-modal.webp",
             "alt": "Fion Star -yhteydenottolomakkeen modaalinäkymä"
           },
           {
-            "src": "/fionstar-2/05-12-week-project.png",
+            "type": "video",
+            "src": "/fionstar/04-12-week-project.mp4",
+            "poster": "/fionstar/05-12-week-project.webp",
             "alt": "Fion Star -12 viikon projektiaikajana"
           }
         ],
@@ -202,7 +212,7 @@
         "project_name": "VCTR AI Assistant",
         "project_title": "AI-pohjainen chatbot-järjestelmä",
         "description": "Rakensin full stack -AI-avustajan, joka keskittyi rakenteistettuun datankäsittelyyn, nopeampiin vasteaikoihin ja luotettavaan käyttökokemukseen.",
-        "images": [],
+        "media": [],
         "tech_stack": ["React", "Supabase", "Vercel AI SDK"],
         "results": {
           "performance_lighthouse": null,
@@ -225,7 +235,7 @@
         "project_name": "FEM Weather App",
         "project_title": "Hackathon-sääsovellus",
         "description": "Rakensin nopeasti toimivan sääsovelluksen hackathon-aikataululla, painottaen selkeää UI:ta ja reaaliaikaista dataa.",
-        "images": [],
+        "media": [],
         "tech_stack": ["React", "API-integraatio", "CSS"],
         "results": {
           "performance_lighthouse": null,
@@ -245,7 +255,7 @@
         "project_name": "Siili Solutions",
         "project_title": "Akateeminen UX- ja tuotesuunnitteluprojekti",
         "description": "Yliopisto–teollisuusprojekti, joka keskittyi UX-ajatteluun, tuotteen rakenteeseen ja yritystason suunnittelunäkökulmiin.",
-        "images": [],
+        "media": [],
         "tech_stack": ["UX-suunnittelu", "Tuoteajattelu", "Figma"],
         "results": {
           "performance_lighthouse": null,
