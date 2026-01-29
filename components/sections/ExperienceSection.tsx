@@ -10,6 +10,7 @@ import AutoStoriesOutlinedIcon from "@mui/icons-material/AutoStoriesOutlined";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import type { Locale } from "@/lib/i18n/config";
 import { getTranslation } from "@/lib/i18n/translations";
+import { SectionLabel } from "@/components/ui/SectionLabel";
 
 interface ExperienceSectionProps {
   locale: Locale;
@@ -18,6 +19,7 @@ interface ExperienceSectionProps {
 export default function ExperienceSection({ locale }: ExperienceSectionProps) {
   const experience = getTranslation(locale, "experience") as {
     header: {
+      label: string;
       title: string;
       subtitle: string;
       toggleOptions: {
@@ -105,11 +107,16 @@ export default function ExperienceSection({ locale }: ExperienceSectionProps) {
       style={{ background: "var(--dark-gradient)" }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <header className="w-full flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-          <div className="w-full">
+        <header className="w-full flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+          <div className="w-full flex flex-col items-start gap-4">
+            <SectionLabel
+              text={experience.header.label}
+              variant="dark"
+              className="order-0"
+            />
             <h2
               id="experience-title"
-              className="inline-flex flex-wrap gap-2 text-3xl sm:text-4xl lg:text-7xl font-semibold uppercase heading-text-light"
+              className="order-1 flex flex-wrap gap-2 text-3xl sm:text-4xl lg:text-7xl font-semibold uppercase heading-text-light"
             >
               {titleWords.length > 1 ? (
                 <>
@@ -120,7 +127,7 @@ export default function ExperienceSection({ locale }: ExperienceSectionProps) {
                 <span className="text-gradient">{experience.header.title}</span>
               )}
             </h2>
-            <p className="mt-4 text-base sm:text-lg body-text-light">
+            <p className="order-2 mt-4 text-base sm:text-lg body-text-light">
               {experience.header.subtitle}
             </p>
           </div>

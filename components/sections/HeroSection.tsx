@@ -73,7 +73,7 @@ export default function HeroSection({ locale }: HeroSectionProps) {
             <div className="md:hidden mb-6">
               <div className="h-22 w-22 rounded-full bg-gradient-primary flex items-center justify-center">
                 <Image
-                  src="/victor_no_bg.png"
+                  src="/victor_no_bg.webp"
                   alt={heroImageAlt as string}
                   width={75}
                   height={75}
@@ -146,7 +146,7 @@ export default function HeroSection({ locale }: HeroSectionProps) {
       {/* Portrait Image */}
       <div className="hidden md:flex absolute right-0 bottom-0 w-full h-full items-end justify-end pointer-events-none">
         <Image
-          src="/victor_no_bg.png"
+          src="/victor_no_bg.webp"
           alt={heroImageAlt as string}
           width={1000}
           height={900}

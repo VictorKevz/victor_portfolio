@@ -7,6 +7,7 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import type { Locale } from "@/lib/i18n/config";
 import { getTranslation } from "@/lib/i18n/translations";
 import { GradientIcon } from "@/components/ui/GradientIcon";
+import { SectionLabel } from "@/components/ui/SectionLabel";
 
 interface TestimonialsSectionProps {
   locale: Locale;
@@ -16,6 +17,7 @@ export default function TestimonialsSection({
   locale,
 }: TestimonialsSectionProps) {
   const testimonials = getTranslation(locale, "testimonials") as {
+    label: string;
     title: string;
     description: string;
     items: Array<{
@@ -29,7 +31,7 @@ export default function TestimonialsSection({
   const testimonialIcons: Record<
     string,
     {
-      Icon: typeof BusinessCenterIcon;
+      Icon: React.ElementType;
       gradient: "gradient-primary" | "gradient-secondary";
     }
   > = {
@@ -53,9 +55,10 @@ export default function TestimonialsSection({
     >
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 pt-10">
         <header className="text-center max-w-2xl mx-auto">
+          <SectionLabel text={testimonials.label} />
           <h2
             id="recommendations-title"
-            className="outline-text-dark text-3xl sm:text-4xl lg:text-7xl font-semibold uppercase"
+            className="mt-4 outline-text-dark text-3xl sm:text-4xl lg:text-7xl font-semibold uppercase"
           >
             {testimonials.title}
           </h2>
@@ -87,7 +90,10 @@ export default function TestimonialsSection({
                 >
                   <article className="rounded-[2.7rem] bg-(--neutral-0)/95 border border-(--border-dark) p-6 pb-7 h-full shadow-2xl shadow-yellow-500/10 flex flex-col">
                     <div className="flex items-start justify-between gap-4">
-                      <GradientIcon Icon={meta.Icon} gradient={meta.gradient} />
+                      <GradientIcon
+                        Icon={meta.Icon as React.ElementType}
+                        gradient={meta.gradient}
+                      />
                       <FormatQuoteIcon
                         className="text-2xl! heading-text-dark opacity-40"
                         fontSize="inherit"

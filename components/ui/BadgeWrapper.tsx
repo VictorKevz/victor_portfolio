@@ -23,7 +23,7 @@ export function BadgeWrapper({
 }: BadgeWrapperProps) {
   return (
     <article
-      className={`w-full max-w-xs rounded-3xl surface-glass backdrop-blur-2xl backdrop-brightness-60 backdrop-saturate-150  ${className}`}
+      className={`w-full sm:max-w-xs rounded-3xl surface-glass backdrop-blur-2xl backdrop-brightness-60 backdrop-saturate-150 ${className}`}
     >
       <header className="w-full p-5 bg-(--surface-card-dark)! rounded-t-3xl border-b border-(--border-light)">
         <h2 className="text-lg font-semibold uppercase tracking-[0.2em] heading-text-light">

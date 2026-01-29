@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import HeroSection from "@/components/sections/HeroSection";
 import ServicesSection from "@/components/sections/ServicesSection";
+import ProjectsSection from "@/components/sections/ProjectsSection";
 import ExperienceSection from "@/components/sections/ExperienceSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import ContactSection from "@/components/sections/ContactSection";
@@ -56,6 +57,7 @@ export default async function HomePage({ params }: PageProps) {
     <main className="w-full">
       <HeroSection locale={locale as Locale} />
       <ServicesSection locale={locale as Locale} />
+      <ProjectsSection locale={locale as Locale} />
       <ExperienceSection locale={locale as Locale} />
       <TestimonialsSection locale={locale as Locale} />
       <ContactSection locale={locale as Locale} />

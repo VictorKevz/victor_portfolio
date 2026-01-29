@@ -38,7 +38,7 @@ export const siteConfig: SiteConfig = {
     name: "Victor Kuwandira",
     description: "",
     website: "https://victorkevz.com",
-    logo: "/victor_logo.png",
+    logo: "/victor_logo.webp",
   },
   site: {
     name: "Victor Kuwandira",

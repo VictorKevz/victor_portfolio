@@ -22,11 +22,11 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/favicon_io/favicon.ico", type: "image/x-icon" },
-      { url: "/favicon_io/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/favicon_io/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon_io/favicon-16x16.webp", sizes: "16x16", type: "image/webp" },
+      { url: "/favicon_io/favicon-32x32.webp", sizes: "32x32", type: "image/webp" },
     ],
     apple: [
-      { url: "/favicon_io/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+      { url: "/favicon_io/apple-touch-icon.webp", sizes: "180x180", type: "image/webp" },
     ],
   },
   manifest: "/site.webmanifest",

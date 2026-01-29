@@ -12,15 +12,22 @@
     circle,
     #f0fdff 0%,
     #e1faff 25%,
-    #ffffec 100%
+    #fff8db 100%
+  );
+  --secondary-light-gradient: radial-gradient(
+    circle,
+    #fcfeff 0%,
+    #f8feff 25%,
+    #fffefa 100%
   );
   --gradient-primary: linear-gradient(90deg, #0cc0df 0%, #ffde59 100%);
   --gradient-secondary: linear-gradient(90deg, #8c52ff 0%, #5ce1e6 100%);
 
   /* Neutral scale (white -> black) */
   --neutral-0: #ffffff;
-  --neutral-100: #f5f5f5;
-  --neutral-200: #e5e5e5;
+  --neutral-50: #f9f9f9;
+  --neutral-100: #fefdf4;
+  --neutral-200: #fdfdfd;
   --neutral-300: #d4d4d4;
   --neutral-400: #a3a3a3;
   --neutral-500: #737373;

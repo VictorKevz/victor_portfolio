@@ -8,6 +8,7 @@ import type { Locale } from "@/lib/i18n/config";
 import { getTranslation } from "@/lib/i18n/translations";
 import { CTALink } from "@/components/ui/CTALink";
 import { GradientIcon } from "@/components/ui/GradientIcon";
+import { SectionLabel } from "@/components/ui/SectionLabel";
 
 interface ServicesSectionProps {
   locale: Locale;
@@ -15,6 +16,7 @@ interface ServicesSectionProps {
 
 export default function ServicesSection({ locale }: ServicesSectionProps) {
   const services = getTranslation(locale, "services") as {
+    label: string;
     title: string;
     description: string;
     imageAlt: string;
@@ -41,15 +43,16 @@ export default function ServicesSection({ locale }: ServicesSectionProps) {
   return (
     <section
       id="services"
-      className="w-full text-on-primary"
+      className="w-full text-on-primary bg-(--neutral-100)"
       aria-labelledby="services-title"
-      style={{ background: "var(--light-gradient)" }}
+      // style={{ background: "var(--secondary-light-gradient)" }}
     >
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <header className="text-center max-w-2xl mx-auto">
+          <SectionLabel text={services.label} />
           <h2
             id="services-title"
-            className="outline-text-dark text-3xl sm:text-4xl lg:text-7xl font-semibold  uppercase"
+            className="mt-4 outline-text-dark text-3xl sm:text-4xl lg:text-7xl font-semibold  uppercase"
           >
             {services.title}
           </h2>
@@ -61,7 +64,7 @@ export default function ServicesSection({ locale }: ServicesSectionProps) {
         <div className="mt-20 grid gap-10 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,2fr)] items-stretch">
           <figure className="rounded-[3rem] relative overflow-hidden bg-(--neutral-0)/90 h-full border border-(--border-dark)">
             <Image
-              src="/service-image1.png"
+              src="/service-image.webp"
               alt={services.imageAlt}
               width={800}
               height={420}

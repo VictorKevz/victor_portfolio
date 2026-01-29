@@ -83,6 +83,7 @@
     }
   },
   "services": {
+    "label": "Palvelut",
     "title": "Suorituskykyiset digitaaliset ratkaisut",
     "description": "Rakennan nopeita, luotettavia ja käyttäjäkeskeisiä tuotteita, jotka on suunniteltu edistämään liiketoiminnan kasvua ja tehostamaan tiimisi toimintaa.",
     "imageAlt": "Palveluiden suunnittelutilanne",
@@ -131,8 +132,142 @@
       }
     ]
   },
+  "projects_section": {
+    "label": "Projektit",
+    "title": "Valitut projektit",
+    "description": "Käytännön ja omia projekteja, jotka keskittyvät skaalautuvien ja suorituskykyisten verkkoratkaisujen rakentamiseen mitattavin tuloksin.",
+    "labels": {
+      "techStack": "Teknologia",
+      "results": "Tulokset",
+      "performance": "Suorituskyky",
+      "accessibility": "Saavutettavuus",
+      "bestPractices": "Parhaat käytännöt",
+      "seo": "SEO",
+      "otherMetrics": "Muut mittarit",
+      "caseStudy": "Case study",
+      "github": "GitHub",
+      "liveSite": "Live-sivusto",
+      "carouselPrev": "Edellinen kuva",
+      "carouselNext": "Seuraava kuva",
+      "imagePlaceholder": "Projektikuva, placeholder",
+      "showMore": "Näytä lisää projekteja",
+      "showLess": "Piilota projektit"
+    },
+    "theme": "light",
+    "background": "light-gradient",
+    "projects": [
+      {
+        "id": "fionstar",
+        "project_name": "Fion Star",
+        "project_title": "Headless-verkkosivusto ja arviointi-MVP",
+        "description": "Suunnittelin ja rakensin headless-järjestelmän, joka käänsi liiketoimintatavoitteet pelkistettyyn, suorituskykyiseen arviointi-MVP:hen, jossa asiakkaalla on täysi sisällönhallinta.",
+        "images": [
+          {
+            "src": "/fionstar-2/01-home-page.png",
+            "alt": "Fion Star -etusivun hero-asettelu"
+          },
+          {
+            "src": "/fionstar-2/02-survery-form.png",
+            "alt": "Fion Star -arviointikyselyn lomakenäkymä"
+          },
+          {
+            "src": "/fionstar-2/03-service-page.png",
+            "alt": "Fion Star -palvelusivun sisältöasettelu"
+          },
+          {
+            "src": "/fionstar-2/04-contact-modal.png",
+            "alt": "Fion Star -yhteydenottolomakkeen modaalinäkymä"
+          },
+          {
+            "src": "/fionstar-2/05-12-week-project.png",
+            "alt": "Fion Star -12 viikon projektiaikajana"
+          }
+        ],
+        "tech_stack": ["Next.js", "WordPress (Headless)", "ACF"],
+        "results": {
+          "performance_lighthouse": "99%",
+          "accessibility_lighthouse": "96%",
+          "best_practices_lighthouse": "100%",
+          "seo_lighthouse": "100%",
+          "other_metrics": ["50 % kasvu kyselyaktiivisuudessa", "6 päivän toimitus"]
+        },
+        "links": {
+          "case_study": "",
+          "github": "",
+          "live_site": "https://www.fionstar.com"
+        }
+      },
+      {
+        "id": "vctr-ai",
+        "project_name": "VCTR AI Assistant",
+        "project_title": "AI-pohjainen chatbot-järjestelmä",
+        "description": "Rakensin full stack -AI-avustajan, joka keskittyi rakenteistettuun datankäsittelyyn, nopeampiin vasteaikoihin ja luotettavaan käyttökokemukseen.",
+        "images": [],
+        "tech_stack": ["React", "Supabase", "Vercel AI SDK"],
+        "results": {
+          "performance_lighthouse": null,
+          "accessibility_lighthouse": null,
+          "best_practices_lighthouse": null,
+          "seo_lighthouse": null,
+          "other_metrics": [
+            "50 % nopeampi vasteaika",
+            "Parempi vastausten osuvuus tagitetulla FAQ-mallilla"
+          ]
+        },
+        "links": {
+          "case_study": "",
+          "github": "",
+          "live_site": ""
+        }
+      },
+      {
+        "id": "fem-weather",
+        "project_name": "FEM Weather App",
+        "project_title": "Hackathon-sääsovellus",
+        "description": "Rakensin nopeasti toimivan sääsovelluksen hackathon-aikataululla, painottaen selkeää UI:ta ja reaaliaikaista dataa.",
+        "images": [],
+        "tech_stack": ["React", "API-integraatio", "CSS"],
+        "results": {
+          "performance_lighthouse": null,
+          "accessibility_lighthouse": null,
+          "best_practices_lighthouse": null,
+          "seo_lighthouse": null,
+          "other_metrics": ["Hackathon-toimitus", "Live-demo julkaistu"]
+        },
+        "links": {
+          "case_study": "",
+          "github": "",
+          "live_site": ""
+        }
+      },
+      {
+        "id": "siili-solutions",
+        "project_name": "Siili Solutions",
+        "project_title": "Akateeminen UX- ja tuotesuunnitteluprojekti",
+        "description": "Yliopisto–teollisuusprojekti, joka keskittyi UX-ajatteluun, tuotteen rakenteeseen ja yritystason suunnittelunäkökulmiin.",
+        "images": [],
+        "tech_stack": ["UX-suunnittelu", "Tuoteajattelu", "Figma"],
+        "results": {
+          "performance_lighthouse": null,
+          "accessibility_lighthouse": null,
+          "best_practices_lighthouse": null,
+          "seo_lighthouse": null,
+          "other_metrics": [
+            "Yritystason UX-kokemus",
+            "Akateeminen–teollinen yhteistyö"
+          ]
+        },
+        "links": {
+          "case_study": "",
+          "github": "",
+          "live_site": ""
+        }
+      }
+    ]
+  },
   "experience": {
     "header": {
+      "label": "Urapolku",
       "title": "URAPOLKU",
       "subtitle": "Katsaus ammatilliseen kasvuun ja akateemiseen huippuosaamiseen yli rajojen.",
       "toggleOptions": {
@@ -207,6 +342,7 @@
     ]
   },
   "testimonials": {
+    "label": "Suositukset",
     "title": "Suositukset",
     "description": "Yhteistyökumppaneiden, asiakkaiden ja ohjaajien kokemuksia työskentelystä kanssani.",
     "items": [
@@ -231,6 +367,7 @@
     ]
   },
   "contact": {
+    "label": "Yhteys",
     "title": "Rakennetaan jotain",
     "description": "Avoin ammatilliselle yhteistyölle ja kehittäjärooleille, keskityn rakentamaan skaalautuvia ja käyttäjälähtöisiä tuotteita, jotka tuottavat todellista liiketoiminta-arvoa.",
     "contacts": [

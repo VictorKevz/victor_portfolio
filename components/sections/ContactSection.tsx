@@ -13,6 +13,7 @@ import { FormFieldGroup } from "@/components/ui/FormFieldGroup";
 import { Button } from "@/components/ui/Button";
 import { GradientIcon } from "@/components/ui/GradientIcon";
 import { useToast } from "@/lib/contexts/ToastContext";
+import { SectionLabel } from "@/components/ui/SectionLabel";
 
 interface ContactSectionProps {
   locale: Locale;
@@ -20,6 +21,7 @@ interface ContactSectionProps {
 
 export default function ContactSection({ locale }: ContactSectionProps) {
   const contact = getTranslation(locale, "contact") as {
+    label: string;
     title: string;
     description: string;
     contacts: Array<{
@@ -215,9 +217,10 @@ export default function ContactSection({ locale }: ContactSectionProps) {
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] items-start justify-items-center lg:justify-items-stretch">
           <div className="text-left">
             <header className="max-w-xl text-left">
+              <SectionLabel text={contact.label} />
               <h2
                 id="contact-title"
-                className="text-4xl sm:text-5xl lg:text-7xl font-bold uppercase heading-text-dark max-w-sm"
+                className="mt-4 text-4xl sm:text-5xl lg:text-7xl font-bold uppercase heading-text-dark max-w-sm"
               >
                 {contact.title}
               </h2>

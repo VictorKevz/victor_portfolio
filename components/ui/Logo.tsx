@@ -23,7 +23,7 @@ export function Logo({
       <span
         className={`flex items-center justify-center rounded-full surface-glass backdrop-blur ${iconClassName}`}
       >
-        <Image src="/victor_logo.png" alt={`${label} logo`} width={34} height={34} />
+        <Image src="/victor_logo.webp" alt={`${label} logo`} width={34} height={34} />
       </span>
       {showLabel ? (
         <span className="text-base font-semibold text-primary">{label}</span>
