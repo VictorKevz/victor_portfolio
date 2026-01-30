@@ -49,13 +49,12 @@ export function ImageCarousel({
     });
   }, [activeIndex]);
 
-  const transition =
-    prefersReducedMotion
-      ? ({ duration: 0 } as const)
-      : ({ duration: 0.35, ease: "easeInOut" } as const);
+  const transition = prefersReducedMotion
+    ? ({ duration: 0 } as const)
+    : ({ duration: 0.35, ease: "easeInOut" } as const);
 
   return (
-    <div className="h-64 sm:h-80 lg:h-full min-w-0">
+    <div className="h-64 sm:h-96 md:h-112 lg:h-full min-w-0">
       <div
         className="relative rounded-4xl overflow-hidden bg-(--neutral-0)/90 h-full"
         style={
@@ -91,23 +90,30 @@ export function ImageCarousel({
                   ref={(element) => {
                     videoRefs.current[index] = element;
                   }}
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-cover object-top lg:object-center"
                   src={slide.src}
                   poster={slide.poster}
                   muted
                   loop
                   playsInline
                   autoPlay={index === activeIndex}
-                  preload={index === 0 ? "auto" : "metadata"}
+                  preload={index === 0 ? "auto" : "none"}
                   aria-label={slide.alt}
-                />
+                >
+                  <track
+                    kind="captions"
+                    src="/captions/blank.vtt"
+                    srcLang="en"
+                    label="English"
+                  />
+                </video>
               ) : (
                 <Image
                   src={slide.src}
                   alt={slide.alt}
                   fill
                   sizes="(min-width: 1024px) 40vw, 100vw"
-                  className="object-cover"
+                  className="object-cover object-top lg:object-center"
                 />
               )}
             </motion.div>
@@ -137,17 +143,23 @@ export function ImageCarousel({
       </div>
 
       {totalSlides > 1 ? (
-        <div className="mt-3 flex items-center justify-center gap-2">
+        <div className=" flex items-center justify-center gap-1">
           {slides.map((_, slideIndex) => (
             <button
               key={`dot-${slideIndex}`}
               type="button"
               aria-label={`Slide ${slideIndex + 1}`}
-              className={`h-2.5 w-2.5 rounded-full border border-(--border-dark) transition ${
-                slideIndex === activeIndex ? "bg-(--border-dark)" : "bg-transparent"
-              }`}
+              className="h-11 w-11 -mx-3 rounded-full flex items-center justify-center"
               onClick={() => onDot(slideIndex)}
-            />
+            >
+              <span
+                className={`h-2.5 w-2.5 rounded-full border border-(--border-dark) transition ${
+                  slideIndex === activeIndex
+                    ? "bg-(--border-dark)"
+                    : "bg-transparent"
+                }`}
+              />
+            </button>
           ))}
         </div>
       ) : null}

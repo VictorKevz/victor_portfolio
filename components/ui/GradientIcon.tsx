@@ -20,7 +20,7 @@ export function GradientIcon({
     >
       <span
         aria-hidden="true"
-        className={`flex items-center justify-center h-8 w-8 rounded-lg ${innerClassName}`}
+        className={`flex items-center justify-center h-8 w-8 md:h-10 md:w-10 rounded-lg ${innerClassName}`}
       >
         <Icon className="text-on-primary body-text-dark" fontSize="medium" />
       </span>

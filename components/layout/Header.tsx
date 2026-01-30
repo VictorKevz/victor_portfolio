@@ -143,15 +143,16 @@ export function Header({ locale }: HeaderProps) {
         fallback: "Home",
       },
       {
-        href: "#services",
-        label: getTranslation(locale, "header.nav.services"),
-        fallback: "Services",
-      },
-      {
         href: "#projects",
         label: getTranslation(locale, "header.nav.projects"),
         fallback: "Projects",
       },
+      {
+        href: "#services",
+        label: getTranslation(locale, "header.nav.services"),
+        fallback: "Services",
+      },
+
       {
         href: "#contact",
         label: getTranslation(locale, "header.nav.contact"),

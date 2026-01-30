@@ -351,6 +351,32 @@
       }
     ]
   },
+  "skills_section": {
+    "label": "Skills",
+    "title": "Skills & Tools",
+    "categories": [
+      {
+        "id": "frontend",
+        "label": "Front-end",
+        "items": ["React", "Next.js", "TypeScript", "Tailwind"]
+      },
+      {
+        "id": "backend",
+        "label": "Back-end",
+        "items": ["REST APIs", "Supabase", "Firebase", "Serverless Functions"]
+      },
+      {
+        "id": "tooling",
+        "label": "Tooling",
+        "items": ["WordPress", "Contentful", "Vercel", "Vercel AI SDK"]
+      },
+      {
+        "id": "design",
+        "label": "Design",
+        "items": ["Figma", "Canva", "CapCut", "Slack"]
+      }
+    ]
+  },
   "testimonials": {
     "label": "Testimonials",
     "title": "Testimonials",

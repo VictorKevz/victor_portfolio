@@ -238,37 +238,31 @@ export default function ContactSection({ locale }: ContactSectionProps) {
                 return (
                   <div
                     key={item.id}
-                    className="relative overflow-hidden flex items-center gap-4 rounded-2xl px-4 py-3 border border-dark shadow-(--shadow-elevated) justify-start text-left w-full sm:max-w-xs text-on-secondary"
+                    className="relative overflow-hidden rounded-2xl px-4 py-3 border border-dark shadow-(--shadow-elevated) text-left w-full sm:max-w-xs text-on-secondary"
                     style={{ background: "var(--dark-gradient)" }}
                   >
-                    <div
-                      aria-hidden="true"
-                      className="absolute inset-0 pointer-events-none bg-(--neutral-1000)/20"
-                    />
-                    <GradientIcon
-                      Icon={Icon}
-                      gradient="gradient-secondary"
-                      innerClassName={
-                        item.id === "phone"
-                          ? "bg-gradient-primary"
-                          : "bg-(--neutral-0)/80"
-                      }
-                    />
-                    <div className="relative z-10 flex flex-col text-sm sm:text-base">
-                      <dt className="uppercase tracking-[0.2em] text-xs body-text-light">
-                        {item.label}
-                      </dt>
-                      <dd className="font-semibold heading-text-light">
-                        <a
-                          href={item.href}
-                          {...(item.id === "linkedin"
-                            ? { target: "_blank", rel: "noopener noreferrer" }
-                            : {})}
-                        >
-                          {item.value}
-                        </a>
-                      </dd>
-                    </div>
+                    <dt className="uppercase tracking-[0.2em] text-xs body-text-light">
+                      {item.label}
+                    </dt>
+                    <dd className="mt-2 flex items-center gap-3 text-sm sm:text-base font-semibold heading-text-light">
+                      <GradientIcon
+                        Icon={Icon}
+                        gradient="gradient-secondary"
+                        innerClassName={
+                          item.id === "phone"
+                            ? "bg-gradient-primary"
+                            : "bg-(--neutral-0)/80"
+                        }
+                      />
+                      <a
+                        href={item.href}
+                        {...(item.id === "linkedin"
+                          ? { target: "_blank", rel: "noopener noreferrer" }
+                          : {})}
+                      >
+                        {item.value}
+                      </a>
+                    </dd>
                   </div>
                 );
               })}

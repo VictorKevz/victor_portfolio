@@ -84,7 +84,7 @@
   },
   "services": {
     "label": "Palvelut",
-    "title": "Suorituskykyiset digitaaliset ratkaisut",
+    "title": "Digital Solutions",
     "description": "Rakennan nopeita, luotettavia ja käyttäjäkeskeisiä tuotteita, jotka on suunniteltu edistämään liiketoiminnan kasvua ja tehostamaan tiimisi toimintaa.",
     "imageAlt": "Palveluiden suunnittelutilanne",
     "ctaTitle": "Onko projekti mielessä?",
@@ -348,6 +348,32 @@
           "Toteutti käytännön projekteja olio-ohjelmointikielillä ja tietojenkäsittelytieteen ydinkäsitteillä."
         ],
         "tags": ["JAVA (OOP)", "VERKKOKEHITYS", "KÄYTTÄJÄTUTKIMUS", "C-KIELI"]
+      }
+    ]
+  },
+  "skills_section": {
+    "label": "Taidot",
+    "title": "Taidot & työkalut",
+    "categories": [
+      {
+        "id": "frontend",
+        "label": "Front-end",
+        "items": ["React", "Next.js", "TypeScript", "Tailwind"]
+      },
+      {
+        "id": "backend",
+        "label": "Back-end",
+        "items": ["REST API:t", "Supabase", "Firebase", "Serverless Functions"]
+      },
+      {
+        "id": "tooling",
+        "label": "Työkalut",
+        "items": ["WordPress", "Contentful", "Vercel", "Vercel AI SDK"]
+      },
+      {
+        "id": "design",
+        "label": "Suunnittelu",
+        "items": ["Figma", "Canva", "CapCut", "Slack"]
       }
     ]
   },
