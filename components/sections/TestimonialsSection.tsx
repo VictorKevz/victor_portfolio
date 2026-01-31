@@ -49,9 +49,8 @@ export default function TestimonialsSection({
   return (
     <section
       id="recommendations"
-      className="w-full text-on-primary bg-(--light-background)"
+      className="w-full text-on-primary bg-(--neutral-100)"
       aria-labelledby="recommendations-title"
-      // style={{ background: "var(--light-gradient)" }}
     >
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 pt-10">
         <header className="text-center max-w-2xl mx-auto">

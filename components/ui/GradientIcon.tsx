@@ -1,17 +1,22 @@
 import type { ElementType } from "react";
 
-interface GradientIconProps {
-  Icon: ElementType;
+type GradientIconProps = {
   gradient: "gradient-primary" | "gradient-secondary";
   className?: string;
   innerClassName?: string;
-}
+  alt?: string;
+} & (
+  | { Icon: ElementType; imageSrc?: never }
+  | { Icon?: never; imageSrc: string }
+);
 
 export function GradientIcon({
   Icon,
+  imageSrc,
   gradient,
   className = "",
   innerClassName = "bg-(--neutral-0)/80",
+  alt = "",
 }: GradientIconProps) {
   return (
     <span
@@ -22,7 +27,16 @@ export function GradientIcon({
         aria-hidden="true"
         className={`flex items-center justify-center h-8 w-8 md:h-10 md:w-10 rounded-lg ${innerClassName}`}
       >
-        <Icon className="text-on-primary body-text-dark" fontSize="medium" />
+        {imageSrc ? (
+          <img
+            src={imageSrc}
+            alt={alt}
+            className="h-5 w-5 md:h-6 md:w-6 object-contain"
+            loading="lazy"
+          />
+        ) : Icon ? (
+          <Icon className="text-on-primary body-text-dark" fontSize="medium" />
+        ) : null}
       </span>
     </span>
   );

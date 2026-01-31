@@ -214,7 +214,7 @@ export default function ContactSection({ locale }: ContactSectionProps) {
         style={{ background: "var(--gradient-primary)" }}
       />
       <div className="relative z-10 max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center lg:text-left">
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] items-start justify-items-center lg:justify-items-stretch">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] items-center justify-items-center lg:justify-items-stretch">
           <div className="text-left">
             <header className="max-w-xl text-left">
               <SectionLabel text={contact.label} />
@@ -346,10 +346,7 @@ export default function ContactSection({ locale }: ContactSectionProps) {
                   className="block text-(--body-text-light) text-sm font-semibold mb-2 ml-0.5"
                 >
                   {contact.form.labels.service}
-                  <span
-                    className="text-(--error) ml-1"
-                    aria-label="required"
-                  >
+                  <span className="text-(--error) ml-1" aria-label="required">
                     *
                   </span>
                 </label>

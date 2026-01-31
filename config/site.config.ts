@@ -1,52 +1,35 @@
-export interface SiteConfig {
-  author: {
-    firstName: string;
-    lastName: string;
-    name: string;
-    bio: string;
-    role: string;
-    email?: string;
-    website?: string;
-  };
-  organization: {
-    name: string;
-    description: string;
-    website: string;
-    logo?: string;
-  };
-  site: {
-    name: string;
-    description: string;
-    url: string;
-    defaultLocale: "en" | "fi";
-    locales: ("en" | "fi")[];
-  };
-  topics: string[];
-  contentSource: "static";
-}
-
-export const siteConfig: SiteConfig = {
+export const siteConfig = {
   author: {
     firstName: "Victor",
     lastName: "Kuwandira",
     name: "Victor Kuwandira",
-    bio: "",
-    role: "",
+    bio: "Front-end web developer based in Oulu, Finland, specializing in React, Next.js, and TypeScript. Co-founder of Kevz Tech and creator of AI-driven solutions for business insights.",
+    role: "Frontend Web Developer & AI Solution Creator",
     website: "https://victorkevz.com",
   },
   organization: {
     name: "Victor Kuwandira",
-    description: "",
+    description:
+      "Personal brand and portfolio showcasing software projects, AI experiments, and freelance work.",
     website: "https://victorkevz.com",
     logo: "/victor_logo.webp",
   },
   site: {
     name: "Victor Kuwandira",
-    description: "",
+    description:
+      "Portfolio of Victor Kuwandira — Frontend developer, AI enthusiast, and digital solution creator.",
     url: "https://victorkevz.com",
     defaultLocale: "en",
     locales: ["en", "fi"],
   },
-  topics: [],
+  topics: [
+    "Frontend Development",
+    "React",
+    "Next.js",
+    "TypeScript",
+    "AI",
+    "Chatbots",
+    "Web Development",
+  ],
   contentSource: "static",
 };

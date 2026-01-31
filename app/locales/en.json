@@ -193,13 +193,20 @@
             "alt": "Fion Star 12-week project timeline overview"
           }
         ],
-        "tech_stack": ["Next.js", "WordPress (Headless)", "ACF"],
+        "tech_stack": [
+          "Next.js",
+          "WordPress (Headless)",
+          "ACF"
+        ],
         "results": {
           "performance_lighthouse": "99%",
           "accessibility_lighthouse": "96%",
           "best_practices_lighthouse": "100%",
           "seo_lighthouse": "100%",
-          "other_metrics": ["50% increase in survey engagement", "6-day delivery"]
+          "other_metrics": [
+            "50% increase in survey engagement",
+            "6-day delivery"
+          ]
         },
         "links": {
           "case_study": "",
@@ -213,7 +220,11 @@
         "project_title": "AI-Powered Chatbot System",
         "description": "Built a full-stack AI assistant focused on structured data handling, faster response times, and reliable user interactions.",
         "media": [],
-        "tech_stack": ["React", "Supabase", "Vercel AI SDK"],
+        "tech_stack": [
+          "React",
+          "Supabase",
+          "Vercel AI SDK"
+        ],
         "results": {
           "performance_lighthouse": null,
           "accessibility_lighthouse": null,
@@ -236,13 +247,20 @@
         "project_title": "Hackathon Weather Application",
         "description": "Rapidly built and shipped a functional weather application under hackathon constraints, focusing on clean UI and real-time data handling.",
         "media": [],
-        "tech_stack": ["React", "API Integration", "CSS"],
+        "tech_stack": [
+          "React",
+          "API Integration",
+          "CSS"
+        ],
         "results": {
           "performance_lighthouse": null,
           "accessibility_lighthouse": null,
           "best_practices_lighthouse": null,
           "seo_lighthouse": null,
-          "other_metrics": ["Hackathon delivery", "Live demo deployed"]
+          "other_metrics": [
+            "Hackathon delivery",
+            "Live demo deployed"
+          ]
         },
         "links": {
           "case_study": "",
@@ -256,7 +274,11 @@
         "project_title": "Academic UX & Product Design Project",
         "description": "University-industry project focused on UX thinking, product structure, and enterprise-level design considerations.",
         "media": [],
-        "tech_stack": ["UX Design", "Product Thinking", "Figma"],
+        "tech_stack": [
+          "UX Design",
+          "Product Thinking",
+          "Figma"
+        ],
         "results": {
           "performance_lighthouse": null,
           "accessibility_lighthouse": null,
@@ -297,7 +319,12 @@
           "Increased user signups by 15% with Brevo automation and lead capture.",
           "Translated business goals into technical solutions with the founder."
         ],
-        "tags": ["NEXT.JS", "HEADLESS WORDPRESS", "REST API", "BREVO"]
+        "tags": [
+          "NEXT.JS",
+          "HEADLESS WORDPRESS",
+          "REST API",
+          "BREVO"
+        ]
       },
       {
         "dateRange": "JULY 2021 — FEB 2022",
@@ -309,7 +336,12 @@
           "Reduced task completion time by 30% through targeted front-end enhancements.",
           "Raised usability scores in pilot testing through rigorous user research."
         ],
-        "tags": ["REACT", "UI/UX", "USER RESEARCH", "SCRUM"]
+        "tags": [
+          "REACT",
+          "UI/UX",
+          "USER RESEARCH",
+          "SCRUM"
+        ]
       },
       {
         "dateRange": "JAN 2020 — SEP 2021",
@@ -321,7 +353,12 @@
           "Managed e-commerce operations on Ecwid, processing 500+ orders.",
           "Streamlined inventory and sales workflows to optimize business operations."
         ],
-        "tags": ["IOT SYSTEMS", "E-COMMERCE", "ECWID", "OPERATIONS"]
+        "tags": [
+          "IOT SYSTEMS",
+          "E-COMMERCE",
+          "ECWID",
+          "OPERATIONS"
+        ]
       }
     ],
     "education": [
@@ -335,7 +372,12 @@
           "Focused studies on human-computer interaction and business development.",
           "Collaborated in agile teams, building a strong foundation in information systems."
         ],
-        "tags": ["HCI", "SOFTWARE DEVELOPMENT", "UX DESIGN", "SDLC"]
+        "tags": [
+          "HCI",
+          "SOFTWARE DEVELOPMENT",
+          "UX DESIGN",
+          "SDLC"
+        ]
       },
       {
         "dateRange": "SEPT 2018 — JULY 2022",
@@ -347,7 +389,12 @@
           "Built a strong foundation in software development principles.",
           "Hands-on projects with OOP languages and core computer science concepts."
         ],
-        "tags": ["JAVA (OOP)", "WEB DEVELOPMENT", "USER RESEARCH", "C LANGUAGE"]
+        "tags": [
+          "JAVA (OOP)",
+          "WEB DEVELOPMENT",
+          "USER RESEARCH",
+          "C LANGUAGE"
+        ]
       }
     ]
   },
@@ -358,22 +405,42 @@
       {
         "id": "frontend",
         "label": "Front-end",
-        "items": ["React", "Next.js", "TypeScript", "Tailwind"]
+        "items": [
+          "React",
+          "Next.js",
+          "TypeScript",
+          "Tailwind"
+        ]
       },
       {
         "id": "backend",
         "label": "Back-end",
-        "items": ["REST APIs", "Supabase", "Firebase", "Serverless Functions"]
+        "items": [
+          "REST APIs",
+          "Supabase",
+          "Firebase",
+          "Serverless"
+        ]
       },
       {
         "id": "tooling",
         "label": "Tooling",
-        "items": ["WordPress", "Contentful", "Vercel", "Vercel AI SDK"]
+        "items": [
+          "WordPress",
+          "Contentful",
+          "Vercel",
+          "Vercel AI SDK"
+        ]
       },
       {
         "id": "design",
-        "label": "Design",
-        "items": ["Figma", "Canva", "CapCut", "Slack"]
+        "label": "UI/UX Design",
+        "items": [
+          "Figma",
+          "UI Fundamentals",
+          "Canva",
+          "User Research"
+        ]
       }
     ]
   },
@@ -399,6 +466,51 @@
         "role": "UI | UX Designer",
         "linkedinUrl": "https://www.linkedin.com/in/anj-wanigarathne?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BOr1%2FKCBoQaym8EfoVZBRjQ%3D%3D",
         "quote": "Victor is a strong frontend developer with a solid understanding of UI and UX. He translates design concepts into effective interfaces, communicates clearly, and is a reliable team player."
+      }
+    ]
+  },
+  "about_section": {
+    "label": "About",
+    "title": "About Me",
+    "description": "A quick timeline of the places that shaped how I approach UX, business, and engineering.",
+    "imageCaption": "Finding my pace in Oulu - learning, building, and connecting.",
+    "imageSrc": "/about/about.webp",
+    "items": [
+      {
+        "id": "finland",
+        "title": "Finland: The Convergence",
+        "period": "2023–2025",
+        "tags": [
+          "Systems",
+          "UX",
+          "Strategy",
+          "Adaptive"
+        ],
+        "description": "I moved to Finland to bridge the gap between \"building things\" and \"building the right things.\" My Master’s in Information Systems and Software Engineering allowed me to deep-dive into the friction point where /UX, business strategy/, and code meet. Whether I’m working as a developer or exploring early-stage startup ideas, my focus is on the /Product Engineer/ mindset, ensuring that every line of code I write serves a user need and a business goal."
+      },
+      {
+        "id": "china",
+        "title": "China: The Foundation",
+        "period": "2017–2023",
+        "tags": [
+          "Full-stack",
+          "IoT",
+          "Communication",
+          "Adaptability"
+        ],
+        "description": "Living in China introduced me to the sheer speed and scale of modern technology. While earning my Bachelor’s in Software Engineering and discovering my passion for /web development/, I gained practical experience by starting a small business exporting Smart IoT Security Systems. Beyond the technical side, I spent time creating digital content and lesson plans for English schools, which taught me how to adapt my /communication/ for different audiences. It was here I realized that software is most powerful when it’s used as a tool to bridge global gaps."
+      },
+      {
+        "id": "zimbabwe",
+        "title": "Zimbabwe: The Roots",
+        "period": "1998–2017",
+        "tags": [
+          "Logic",
+          "Mathematics",
+          "Analytical",
+          "Grit"
+        ],
+        "description": "My journey started in Zimbabwe, where my perspective was shaped by the balance of nature and logic. Growing up with a love for farming and fishing gave me a natural patience and an /appreciation/ for systems that grow over time. Academically, I focused on Economics and Mathematics, which built the /analytical foundation/ I use today to solve complex architectural problems in web development. I’m a builder at heart, shaped by the grit and community of my home."
       }
     ]
   },

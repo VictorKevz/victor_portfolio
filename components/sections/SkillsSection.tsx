@@ -1,7 +1,3 @@
-import LanguageIcon from "@mui/icons-material/Language";
-import StorageIcon from "@mui/icons-material/Storage";
-import BuildIcon from "@mui/icons-material/Build";
-import PaletteIcon from "@mui/icons-material/Palette";
 import type { Locale } from "@/lib/i18n/config";
 import { getTranslation } from "@/lib/i18n/translations";
 import { SectionLabel } from "@/components/ui/SectionLabel";
@@ -22,19 +18,13 @@ export default function SkillsSection({ locale }: SkillsSectionProps) {
     }>;
   };
   const gradients = ["gradient-primary", "gradient-secondary"] as const;
-  const icons = {
-    frontend: LanguageIcon,
-    backend: StorageIcon,
-    tooling: BuildIcon,
-    design: PaletteIcon,
-  } as const;
 
   return (
     <section
       id="skills"
       className="w-full text-on-primary relative"
       aria-labelledby="skills-title"
-      style={{ background: "var(--gradient-secondary)" }}
+      style={{ background: "var(--dark-gradient)" }}
     >
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-10 relative z-10">
         <header className="text-center max-w-2xl mx-auto">
@@ -50,14 +40,17 @@ export default function SkillsSection({ locale }: SkillsSectionProps) {
         <ul className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {skills.categories.map((category, index) => {
             const gradient = gradients[index % gradients.length];
-            const Icon = icons[category.id as keyof typeof icons] ?? BuildIcon;
             return (
               <li
                 key={category.id}
                 className="rounded-3xl border border-(--neutral-0)/25 bg-(--dark-background)/30 p-5"
               >
                 <div className="flex items-center gap-3">
-                  <GradientIcon Icon={Icon} gradient={gradient} />
+                  <GradientIcon
+                    imageSrc={`/skills/${category.id}.png`}
+                    gradient={gradient}
+                    alt={category.label}
+                  />
                   <p className="text-sm uppercase tracking-[0.25em] text-(--body-text-light) font-semibold">
                     {category.label}
                   </p>
@@ -81,11 +74,6 @@ export default function SkillsSection({ locale }: SkillsSectionProps) {
           })}
         </ul>
       </div>
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 pointer-events-none opacity-95 z-0"
-        style={{ background: "var(--dark-gradient)" }}
-      />
     </section>
   );
 }

@@ -193,13 +193,20 @@
             "alt": "Fion Star -12 viikon projektiaikajana"
           }
         ],
-        "tech_stack": ["Next.js", "WordPress (Headless)", "ACF"],
+        "tech_stack": [
+          "Next.js",
+          "WordPress (Headless)",
+          "ACF"
+        ],
         "results": {
           "performance_lighthouse": "99%",
           "accessibility_lighthouse": "96%",
           "best_practices_lighthouse": "100%",
           "seo_lighthouse": "100%",
-          "other_metrics": ["50 % kasvu kyselyaktiivisuudessa", "6 päivän toimitus"]
+          "other_metrics": [
+            "50 % kasvu kyselyaktiivisuudessa",
+            "6 päivän toimitus"
+          ]
         },
         "links": {
           "case_study": "",
@@ -213,7 +220,11 @@
         "project_title": "AI-pohjainen chatbot-järjestelmä",
         "description": "Rakensin full stack -AI-avustajan, joka keskittyi rakenteistettuun datankäsittelyyn, nopeampiin vasteaikoihin ja luotettavaan käyttökokemukseen.",
         "media": [],
-        "tech_stack": ["React", "Supabase", "Vercel AI SDK"],
+        "tech_stack": [
+          "React",
+          "Supabase",
+          "Vercel AI SDK"
+        ],
         "results": {
           "performance_lighthouse": null,
           "accessibility_lighthouse": null,
@@ -236,13 +247,20 @@
         "project_title": "Hackathon-sääsovellus",
         "description": "Rakensin nopeasti toimivan sääsovelluksen hackathon-aikataululla, painottaen selkeää UI:ta ja reaaliaikaista dataa.",
         "media": [],
-        "tech_stack": ["React", "API-integraatio", "CSS"],
+        "tech_stack": [
+          "React",
+          "API-integraatio",
+          "CSS"
+        ],
         "results": {
           "performance_lighthouse": null,
           "accessibility_lighthouse": null,
           "best_practices_lighthouse": null,
           "seo_lighthouse": null,
-          "other_metrics": ["Hackathon-toimitus", "Live-demo julkaistu"]
+          "other_metrics": [
+            "Hackathon-toimitus",
+            "Live-demo julkaistu"
+          ]
         },
         "links": {
           "case_study": "",
@@ -256,7 +274,11 @@
         "project_title": "Akateeminen UX- ja tuotesuunnitteluprojekti",
         "description": "Yliopisto–teollisuusprojekti, joka keskittyi UX-ajatteluun, tuotteen rakenteeseen ja yritystason suunnittelunäkökulmiin.",
         "media": [],
-        "tech_stack": ["UX-suunnittelu", "Tuoteajattelu", "Figma"],
+        "tech_stack": [
+          "UX-suunnittelu",
+          "Tuoteajattelu",
+          "Figma"
+        ],
         "results": {
           "performance_lighthouse": null,
           "accessibility_lighthouse": null,
@@ -297,7 +319,12 @@
           "Kasvatti käyttäjärekisteröitymisiä 15 % Brevo-automaatiolla ja liidien keruulla.",
           "Muutti liiketoimintatavoitteet teknisiksi ratkaisuiksi yhdessä perustajan kanssa."
         ],
-        "tags": ["NEXT.JS", "HEADLESS WORDPRESS", "REST API", "BREVO"]
+        "tags": [
+          "NEXT.JS",
+          "HEADLESS WORDPRESS",
+          "REST API",
+          "BREVO"
+        ]
       },
       {
         "dateRange": "JULY 2021 — FEB 2022",
@@ -309,7 +336,12 @@
           "Lyhensi tehtävien suoritusaikaa 30 % kohdennetuilla front-end-parannuksilla.",
           "Nosti käytettävyysarvioita pilottitestauksessa perusteellisen käyttäjätutkimuksen avulla."
         ],
-        "tags": ["REACT", "UI/UX", "KÄYTTÄJÄTUTKIMUS", "SCRUM"]
+        "tags": [
+          "REACT",
+          "UI/UX",
+          "KÄYTTÄJÄTUTKIMUS",
+          "SCRUM"
+        ]
       },
       {
         "dateRange": "JAN 2020 — SEP 2021",
@@ -321,7 +353,12 @@
           "Hallinnoi Ecwid-verkkokaupan operaatioita, käsitellen yli 500 tilausta.",
           "Sujuvoitti varasto- ja myyntityönkulkuja liiketoiminnan tehostamiseksi."
         ],
-        "tags": ["IOT-JÄRJESTELMÄT", "VERKKOKAUPPA", "ECWID", "OPERATIOT"]
+        "tags": [
+          "IOT-JÄRJESTELMÄT",
+          "VERKKOKAUPPA",
+          "ECWID",
+          "OPERATIOT"
+        ]
       }
     ],
     "education": [
@@ -335,7 +372,12 @@
           "Keskittyi opinnoissaan ihmisen ja tietokoneen väliseen vuorovaikutukseen (HCI) sekä liiketoiminnan kehittämiseen.",
           "Työskenteli ketterissä tiimeissä ja rakensi vahvan perusosaamisen tietojärjestelmistä."
         ],
-        "tags": ["HCI", "OHJELMISTOKEHITYS", "UX-SUUNNITTELU", "SDLC"]
+        "tags": [
+          "HCI",
+          "OHJELMISTOKEHITYS",
+          "UX-SUUNNITTELU",
+          "SDLC"
+        ]
       },
       {
         "dateRange": "SEPT 2018 — JULY 2022",
@@ -347,7 +389,12 @@
           "Rakensi vahvan perusosaamisen ohjelmistokehityksen periaatteista.",
           "Toteutti käytännön projekteja olio-ohjelmointikielillä ja tietojenkäsittelytieteen ydinkäsitteillä."
         ],
-        "tags": ["JAVA (OOP)", "VERKKOKEHITYS", "KÄYTTÄJÄTUTKIMUS", "C-KIELI"]
+        "tags": [
+          "JAVA (OOP)",
+          "VERKKOKEHITYS",
+          "KÄYTTÄJÄTUTKIMUS",
+          "C-KIELI"
+        ]
       }
     ]
   },
@@ -358,22 +405,42 @@
       {
         "id": "frontend",
         "label": "Front-end",
-        "items": ["React", "Next.js", "TypeScript", "Tailwind"]
+        "items": [
+          "React",
+          "Next.js",
+          "TypeScript",
+          "Tailwind"
+        ]
       },
       {
         "id": "backend",
         "label": "Back-end",
-        "items": ["REST API:t", "Supabase", "Firebase", "Serverless Functions"]
+        "items": [
+          "REST APIs",
+          "Supabase",
+          "Firebase",
+          "Serverless"
+        ]
       },
       {
         "id": "tooling",
-        "label": "Työkalut",
-        "items": ["WordPress", "Contentful", "Vercel", "Vercel AI SDK"]
+        "label": "Tooling",
+        "items": [
+          "WordPress",
+          "Contentful",
+          "Vercel",
+          "Vercel AI SDK"
+        ]
       },
       {
         "id": "design",
-        "label": "Suunnittelu",
-        "items": ["Figma", "Canva", "CapCut", "Slack"]
+        "label": "UI/UX Design",
+        "items": [
+          "Figma",
+          "UI Fundamentals",
+          "Canva",
+          "User Research"
+        ]
       }
     ]
   },
@@ -399,6 +466,51 @@
         "role": "UI | UX Designer",
         "linkedinUrl": "https://www.linkedin.com/in/anj-wanigarathne?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BOr1%2FKCBoQaym8EfoVZBRjQ%3D%3D",
         "quote": "Victor is a strong frontend developer with a solid understanding of UI and UX. He translates design concepts into effective interfaces, communicates clearly, and is a reliable team player."
+      }
+    ]
+  },
+  "about_section": {
+    "label": "Minusta",
+    "title": "Minusta",
+    "description": "Lyhyt aikajana paikoista, jotka muokkasivat tapaani yhdistää UX, liiketoiminta ja ohjelmistokehitys.",
+    "imageCaption": "Löydän oman rytmini Oulussa - opin, rakennan ja verkostoidun.",
+    "imageSrc": "/about/about.webp",
+    "items": [
+      {
+        "id": "finland",
+        "title": "Suomi: Kohtaaminen",
+        "period": "2023–2025",
+        "tags": [
+          "Järjestelmät",
+          "UX",
+          "Strategia",
+          "Mukautuvuus"
+        ],
+        "description": "Muutin Suomeen kuroakseni umpeen kuilun \"asioiden rakentamisen\" ja \"oikeiden asioiden rakentamisen\" välillä. Tietojärjestelmätieteen ja ohjelmistotekniikan maisteriopintoni antoivat minulle mahdollisuuden syventyä siihen pisteeseen, jossa /UX, liiketoimintastrategia/ ja koodi kohtaavat. Työskentelenpä kehittäjänä tai tutkiessani startup-ideoita, keskityn /Product Engineer/ -ajattelutapaan – varmistan, että jokainen kirjoittamani koodirivi palvelee sekä käyttäjän tarpeita että liiketoiminnan tavoitteita."
+      },
+      {
+        "id": "china",
+        "title": "Kiina: Perustus",
+        "period": "2017–2023",
+        "tags": [
+          "Full-stack",
+          "IoT",
+          "Viestintä",
+          "Sinnikkyys"
+        ],
+        "description": "Asuminen Kiinassa tutustutti minut nykyteknologian nopeuteen ja laajuuteen. Suorittaessani ohjelmistotekniikan kandidaatin tutkintoa ja löytäessäni intohimoni /web-kehitykseen/, hankin käytännön kokemusta perustamalla pienen älykkäitä IoT-laitteita vievän yrityksen. Teknisen työn ohella laadin sisältöjä ja opetussuunnitelmia kielikouluille, mikä opetti minulle, miten /viestintää/ mukautetaan eri yleisöille. Siellä ymmärsin, että ohjelmisto on tehokkaimmillaan silloin, kun se toimii työkaluna globaalille vuorovaikutukselle."
+      },
+      {
+        "id": "zimbabwe",
+        "title": "Zimbabwe: Juuret",
+        "period": "1998–2017",
+        "tags": [
+          "Logiikka",
+          "Matematiikka",
+          "Analyyttisyys",
+          "Sisu"
+        ],
+        "description": "Matkani alkoi Zimbabwesta, missä luonnon ja logiikan tasapaino muovasi maailmankuvaani. Kasvaminen maanviljelyn ja kalastuksen parissa opetti kärsivällisyyttä ja /ymmärrystä/ järjestelmistä, jotka kasvavat ajan myötä. Koulussa keskityin taloustieteeseen ja matematiikkaan, mikä loi /analyyttisen pohjan/, jota hyödynnän nykyään ratkaistessani monimutkaisia web-kehityksen arkkitehtuuriongelmia. Olen sydämeltäni rakentaja, jonka luonnetta kotiini liittyvä sisu ja yhteisöllisyys ovat vahvistaneet."
       }
     ]
   },

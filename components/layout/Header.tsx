@@ -319,18 +319,40 @@ export function Header({ locale }: HeaderProps) {
         </div>
 
         {!isMenuOpen ? (
-          <button
-            type="button"
-            className="lg:hidden h-12 w-12 text-xs uppercase tracking-[0.2em] text-muted surface-glass rounded-full backdrop-blur flex items-center justify-center"
-            aria-expanded={isMenuOpen}
-            aria-controls="mobile-menu"
-            onClick={toggleMenu}
-            aria-label={
-              typeof menuOpenLabel === "string" ? menuOpenLabel : "Menu"
-            }
-          >
-            <MenuIcon fontSize="small" />
-          </button>
+          <div className="lg:hidden flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => {
+                const nextLocale = getToggleLocale();
+                const parts = pathname.split("/");
+                const nextPath = `/${[nextLocale, ...parts.slice(2)].filter(Boolean).join("/")}`;
+                const hash =
+                  typeof window !== "undefined" ? window.location.hash : "";
+                router.push(`${nextPath}${hash}`);
+              }}
+              className="h-12 w-12 rounded-full surface-glass text-muted flex items-center justify-center"
+              aria-label={`Switch language to ${getLocaleLabel(getToggleLocale())}`}
+            >
+              <Image
+                src={`/${locale}.webp`}
+                alt={`${locale.toUpperCase()} flag`}
+                width={24}
+                height={24}
+              />
+            </button>
+            <button
+              type="button"
+              className="h-12 w-12 text-xs uppercase tracking-[0.2em] text-muted surface-glass rounded-full backdrop-blur flex items-center justify-center"
+              aria-expanded={isMenuOpen}
+              aria-controls="mobile-menu"
+              onClick={toggleMenu}
+              aria-label={
+                typeof menuOpenLabel === "string" ? menuOpenLabel : "Menu"
+              }
+            >
+              <MenuIcon fontSize="small" />
+            </button>
+          </div>
         ) : null}
       </nav>
 

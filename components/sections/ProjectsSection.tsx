@@ -36,7 +36,12 @@ export default function ProjectsSection({ locale }: ProjectsSectionProps) {
       project_name: string;
       project_title: string;
       description: string;
-      media: Array<{ type: "image" | "video"; src: string; alt: string; poster?: string }>;
+      media: Array<{
+        type: "image" | "video";
+        src: string;
+        alt: string;
+        poster?: string;
+      }>;
       tech_stack: string[];
       results: {
         performance_lighthouse: string | null;
@@ -58,7 +63,6 @@ export default function ProjectsSection({ locale }: ProjectsSectionProps) {
       id="projects"
       className="w-full text-on-primary bg-(--neutral-100)"
       aria-labelledby="projects-title"
-      // style={{ background: "var(--secondary-light-gradient)" }}
     >
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <header className="text-center max-w-2xl mx-auto">
