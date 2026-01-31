@@ -21,7 +21,7 @@ export const siteConfig = {
       "Portfolio of Victor Kuwandira — Frontend developer, AI enthusiast, and digital solution creator.",
     url: "https://victorkevz.com",
     defaultLocale: "en",
-    locales: ["en", "fi"],
+    locales: ["en", "fi"] as ("en" | "fi")[],
   },
   topics: [
     "Frontend Development",
