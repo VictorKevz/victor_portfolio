@@ -13,6 +13,7 @@ interface ImageCarouselProps {
   baseImage?: string;
   labels: ProjectsLabels;
   prefersReducedMotion: boolean;
+  shouldLoadVideo: boolean;
   onPrev: () => void;
   onNext: () => void;
   onDot: (index: number) => void;
@@ -27,6 +28,7 @@ export function ImageCarousel({
   baseImage,
   labels,
   prefersReducedMotion,
+  shouldLoadVideo,
   onPrev,
   onNext,
   onDot,
@@ -88,28 +90,36 @@ export function ImageCarousel({
                   </span>
                 </div>
               ) : slide.type === "video" ? (
-                <video
-                  ref={(element) => {
-                    videoRefs.current[index] = element;
-                  }}
-                  className="h-full w-full object-cover object-top lg:object-center"
-                  src={slide.src}
-                  poster={slide.poster}
-                  muted
-                  loop
-                  playsInline
-                  autoPlay={index === activeIndex}
-                  preload={index === 0 ? "auto" : "none"}
-                  aria-label={slide.alt}
-                  onEnded={() => onVideoEnd?.(index)}
-                >
-                  <track
-                    kind="captions"
-                    src="/captions/blank.vtt"
-                    srcLang="en"
-                    label="English"
-                  />
-                </video>
+                shouldLoadVideo && index === activeIndex ? (
+                  <video
+                    ref={(element) => {
+                      videoRefs.current[index] = element;
+                    }}
+                    className="h-full w-full object-cover object-top lg:object-center"
+                    src={slide.src}
+                    poster={slide.poster}
+                    muted
+                    loop
+                    playsInline
+                    autoPlay
+                    preload="auto"
+                    aria-label={slide.alt}
+                    onEnded={() => onVideoEnd?.(index)}
+                  >
+                    <track
+                      kind="captions"
+                      src="/captions/blank.vtt"
+                      srcLang="en"
+                      label="English"
+                    />
+                  </video>
+                ) : (
+                  <div className="h-full w-full flex items-center justify-center bg-(--neutral-100)">
+                    <span className="text-[0.6rem] uppercase tracking-[0.35em] heading-text-dark/70">
+                      {labels.imagePlaceholder}
+                    </span>
+                  </div>
+                )
               ) : (
                 <Image
                   src={slide.src}

@@ -68,6 +68,7 @@ export default function ServicesSection({ locale }: ServicesSectionProps) {
               width={800}
               height={420}
               className="w-full h-full object-cover"
+              sizes="(max-width: 1024px) 100vw, 662px"
               priority
             />
           </figure>

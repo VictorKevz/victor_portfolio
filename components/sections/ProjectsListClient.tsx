@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
 import { ImageCarousel } from "@/components/sections/projects/ImageCarousel";
 import { ProjectLinksBar } from "@/components/sections/projects/ProjectLinksBar";
 import { ResultsBlock } from "@/components/sections/projects/ResultsBlock";
@@ -34,13 +33,13 @@ export default function ProjectsListClient({
   labels,
   sectionId,
 }: ProjectsListClientProps) {
-  const prefersReducedMotion = useReducedMotion();
-  const shouldReduceMotion = Boolean(prefersReducedMotion);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const [activeSlides, setActiveSlides] = useState<Record<number, number>>({});
   const [slideDirections, setSlideDirections] = useState<
     Record<number, 1 | -1>
   >({});
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
+  const [hasInteracted, setHasInteracted] = useState(false);
   const activeSlidesRef = useRef(activeSlides);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
@@ -60,6 +59,15 @@ export default function ProjectsListClient({
     }
     return { next: current + direction, nextDirection: direction };
   };
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updatePreference = () => setPrefersReducedMotion(mediaQuery.matches);
+    updatePreference();
+    mediaQuery.addEventListener("change", updatePreference);
+    return () => mediaQuery.removeEventListener("change", updatePreference);
+  }, []);
 
   useEffect(() => {
     activeSlidesRef.current = activeSlides;
@@ -172,7 +180,7 @@ export default function ProjectsListClient({
 
   return (
     <>
-      <motion.ul className="mt-16 grid gap-10">
+      <ul className="mt-16 grid gap-10">
         {visibleProjects.map((project, projectIndex) => {
             const slides = buildSlides(
               project.media ?? [],
@@ -193,7 +201,7 @@ export default function ProjectsListClient({
               return Boolean(slide.poster);
             });
             const baseImageSrc =
-              baseImage?.type === "video" ? baseImage.poster : baseImage?.src;
+              baseImage?.type === "image" ? baseImage.src : undefined;
             const performance = project.results.performance_lighthouse;
             const accessibility = project.results.accessibility_lighthouse;
             const bestPractices = project.results.best_practices_lighthouse;
@@ -208,8 +216,11 @@ export default function ProjectsListClient({
             const gradientVariant =
               projectIndex % 2 === 0 ? "primary" : "secondary";
 
+            const shouldLoadVideo =
+              hasInteracted || hoveredProject === projectIndex;
+
             return (
-              <motion.li key={project.id} className="h-full">
+              <li key={project.id} className="h-full">
                 <article className="group rounded-[2.75rem] bg-(--neutral-0)/90 border border-(--border-dark) p-6 lg:p-8 shadow-2xl shadow-yellow-500/10">
                   <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] items-center lg:items-stretch min-w-0">
                     <div className="space-y-5 min-w-0">
@@ -257,8 +268,10 @@ export default function ProjectsListClient({
                       activeIndex={activeIndex}
                       baseImage={baseImageSrc}
                       labels={labels}
-                      prefersReducedMotion={shouldReduceMotion}
+                      prefersReducedMotion={prefersReducedMotion}
+                      shouldLoadVideo={shouldLoadVideo}
                       onPrev={() => {
+                        setHasInteracted(true);
                         setActiveSlides((prev) => {
                           const current = prev[projectIndex] ?? 0;
                           const next = Math.max(current - 1, 0);
@@ -270,6 +283,7 @@ export default function ProjectsListClient({
                         }));
                       }}
                       onNext={() => {
+                        setHasInteracted(true);
                         setActiveSlides((prev) => {
                           const current = prev[projectIndex] ?? 0;
                           const next = Math.min(current + 1, totalSlides - 1);
@@ -280,10 +294,14 @@ export default function ProjectsListClient({
                           [projectIndex]: 1,
                         }));
                       }}
-                      onDot={(index: number) =>
-                        handleSlideChange(projectIndex, index)
-                      }
-                      onHoverStart={() => setHoveredProject(projectIndex)}
+                      onDot={(index: number) => {
+                        setHasInteracted(true);
+                        handleSlideChange(projectIndex, index);
+                      }}
+                      onHoverStart={() => {
+                        setHasInteracted(true);
+                        setHoveredProject(projectIndex);
+                      }}
                       onHoverEnd={() => setHoveredProject(null)}
                       onVideoEnd={(slideIndex: number) =>
                         handleVideoEnd(projectIndex, slideIndex)
@@ -292,10 +310,10 @@ export default function ProjectsListClient({
                   </div>
                   <ProjectLinksBar labels={labels} links={project.links} />
                 </article>
-              </motion.li>
+              </li>
             );
           })}
-      </motion.ul>
+      </ul>
     </>
   );
 }
