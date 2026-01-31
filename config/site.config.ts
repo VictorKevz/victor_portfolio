@@ -5,6 +5,7 @@ export const siteConfig = {
     name: "Victor Kuwandira",
     bio: "Front-end web developer based in Oulu, Finland, specializing in React, Next.js, and TypeScript. Co-founder of Kevz Tech and creator of AI-driven solutions for business insights.",
     role: "Frontend Web Developer & AI Solution Creator",
+    email: "contact@victorkevz.com",
     website: "https://victorkevz.com",
   },
   organization: {
