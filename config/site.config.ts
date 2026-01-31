@@ -20,7 +20,7 @@ export const siteConfig = {
     description:
       "Portfolio of Victor Kuwandira — Frontend developer, AI enthusiast, and digital solution creator.",
     url: "https://victorkevz.com",
-    defaultLocale: "en",
+    defaultLocale: "en" as "en" | "fi",
     locales: ["en", "fi"] as ("en" | "fi")[],
   },
   topics: [
