@@ -22,8 +22,13 @@ export function ScoreRing({ label, score, variant }: ScoreRingProps) {
   const bgClass = variant === "primary" ? "bg-gradient-primary" : "bg-gradient-secondary";
 
   return (
-    <div className="flex flex-col items-center text-center gap-2">
-      <div className="relative h-14 w-14">
+    <div
+      className="flex flex-col items-center text-center gap-2"
+      role="img"
+      aria-label={`${label} score ${value} out of 100`}
+    >
+      <span className="sr-only">{`${label}: ${value} / 100`}</span>
+      <div className="relative h-14 w-14" aria-hidden="true">
         <svg viewBox="0 0 52 52" className="h-full w-full">
           <defs>
             <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="0%">
@@ -58,11 +63,17 @@ export function ScoreRing({ label, score, variant }: ScoreRingProps) {
           style={{ opacity: 0.18 }}
           aria-hidden="true"
         />
-        <span className="absolute inset-0 flex items-center justify-center text-sm font-semibold heading-text-dark">
+        <span
+          className="absolute inset-0 flex items-center justify-center text-sm font-semibold heading-text-dark"
+          aria-hidden="true"
+        >
           {value}
         </span>
       </div>
-      <span className="text-[0.6rem] uppercase tracking-[0.25em] heading-text-dark">
+      <span
+        className="text-[0.6rem] uppercase tracking-[0.25em] heading-text-dark"
+        aria-hidden="true"
+      >
         {label}
       </span>
     </div>

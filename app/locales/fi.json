@@ -209,9 +209,9 @@
           ]
         },
         "links": {
-          "case_study": "",
-          "github": "",
-          "live_site": "https://www.fionstar.com"
+          "case_study": null,
+          "github": null,
+          "live_site": "https://www.fionstar.com/"
         }
       },
       {
@@ -219,7 +219,33 @@
         "project_name": "VCTR AI Assistant",
         "project_title": "AI-pohjainen chatbot-järjestelmä",
         "description": "Rakensin full stack -AI-avustajan, joka keskittyi rakenteistettuun datankäsittelyyn, nopeampiin vasteaikoihin ja luotettavaan käyttökokemukseen.",
-        "media": [],
+        "media": [
+          {
+            "type": "image",
+            "src": "/vctr/01-default-chat.webp",
+            "alt": "VCTR AI:n oletuschat-näkymä, jossa avustajan tervehdys ja syötekenttä"
+          },
+          {
+            "type": "image",
+            "src": "/vctr/02-active-conversation.webp",
+            "alt": "VCTR AI:n aktiivinen keskustelu, jossa näkyy monivuoroinen viestihistoria"
+          },
+          {
+            "type": "image",
+            "src": "/vctr/03-FAQs-open.webp",
+            "alt": "VCTR AI -käyttöliittymä, jossa UKK-paneeli on avattu pikaohjeita varten"
+          },
+          {
+            "type": "image",
+            "src": "/vctr/04-voice-recording.webp",
+            "alt": "VCTR AI -chat äänitallennustilassa äänen syöttöä varten"
+          },
+          {
+            "type": "image",
+            "src": "/vctr/05-chat-deletion-confirmation.webp",
+            "alt": "VCTR AI:n vahvistusdialogi keskustelun poistamiseen"
+          }
+        ],
         "tech_stack": [
           "React",
           "Supabase",
@@ -236,40 +262,64 @@
           ]
         },
         "links": {
-          "case_study": "",
-          "github": "",
-          "live_site": ""
+          "case_study": "https://www.linkedin.com/pulse/3-lessons-i-learned-building-my-own-ai-chatbot-from-victor-kuwandira-ztdpe",
+          "github": "https://github.com/VictorKevz/chat-bot",
+          "live_site": "https://chatbot.victorkevz.com/"
         }
       },
       {
         "id": "fem-weather",
-        "project_name": "FEM Weather App",
+        "project_name": "DengaSense",
         "project_title": "Hackathon-sääsovellus",
         "description": "Rakensin nopeasti toimivan sääsovelluksen hackathon-aikataululla, painottaen selkeää UI:ta ja reaaliaikaista dataa.",
-        "media": [],
+        "media": [
+          {
+            "type": "video",
+            "src": "/denga-sense/01-home-dark.mp4",
+            "alt": "DengaSense-kotisivu tummalla teemalla, nykyinen sää -näkymä"
+          },
+          {
+            "type": "video",
+            "src": "/denga-sense/02-places-dark.mp4",
+            "alt": "DengaSense-paikkanäkymä tummalla teemalla, tallennetut sijainnit"
+          },
+          {
+            "type": "video",
+            "src": "/denga-sense/03-home-light.mp4",
+            "alt": "DengaSense-kotisivu vaalealla teemalla ja ennustepaneelit"
+          },
+          {
+            "type": "video",
+            "src": "/denga-sense/04-insights-light.mp4",
+            "alt": "DengaSense-insights-näkymä vaalealla teemalla ja AI-sääyhteenvedot"
+          }
+        ],
         "tech_stack": [
           "React",
           "API-integraatio",
-          "CSS"
+          "Tailwind CSS"
         ],
         "results": {
-          "performance_lighthouse": null,
-          "accessibility_lighthouse": null,
-          "best_practices_lighthouse": null,
-          "seo_lighthouse": null,
+          "performance_lighthouse": "97",
+          "accessibility_lighthouse": "92",
+          "best_practices_lighthouse": "92",
+          "seo_lighthouse": "100",
           "other_metrics": [
-            "Hackathon-toimitus",
-            "Live-demo julkaistu"
+            "Hackathonin Top 3 -finalisti",
+            "3. sija AI-kategoriassa",
+            "1. sija UI/UX-kategoriassa"
           ]
         },
         "links": {
-          "case_study": "",
-          "github": "",
-          "live_site": ""
+          "case_study": "https://www.linkedin.com/posts/frontend-mentor_weather-app-hackathon-final-vote-activity-7381346033005510656-tg88?utm_medium=ios_app&rcm=ACoAAEbfoXoBciXSMOyj4V6lmttsg8VO6eqCC1Y&utm_source=social_share_send&utm_campaign=copy_link",
+          "case_study_label": "Projektin tulokset",
+          "github": "https://github.com/VictorKevz/denga-sense",
+          "live_site": "https://denga-sense.vercel.app/"
         }
       },
       {
         "id": "siili-solutions",
+        "isHidden": true,
         "project_name": "Siili Solutions",
         "project_title": "Akateeminen UX- ja tuotesuunnitteluprojekti",
         "description": "Yliopisto–teollisuusprojekti, joka keskittyi UX-ajatteluun, tuotteen rakenteeseen ja yritystason suunnittelunäkökulmiin.",

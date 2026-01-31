@@ -1,4 +1,4 @@
-import { ScoreRing } from "./ScoreRing";
+import { LighthouseScores } from "./LighthouseScores";
 import type { ProjectsLabels, ProjectResults } from "./types";
 
 interface ResultsBlockProps {
@@ -13,50 +13,45 @@ export function ResultsBlock({ labels, results }: ResultsBlockProps) {
   const seo = results.seo_lighthouse;
   const otherMetrics = results.other_metrics ?? [];
 
-  const hasScores =
-    Boolean(performance) ||
-    Boolean(accessibility) ||
-    Boolean(bestPractices) ||
-    Boolean(seo);
+  const scores = [
+    performance
+      ? { label: labels.performance, score: performance, variant: "primary" }
+      : null,
+    accessibility
+      ? {
+          label: labels.accessibility,
+          score: accessibility,
+          variant: "secondary",
+        }
+      : null,
+    bestPractices
+      ? {
+          label: labels.bestPractices,
+          score: bestPractices,
+          variant: "primary",
+        }
+      : null,
+    seo
+      ? {
+          label: labels.seo,
+          score: seo,
+          variant: "secondary",
+        }
+      : null,
+  ].filter(Boolean) as Array<{
+    label: string;
+    score: string;
+    variant: "primary" | "secondary";
+  }>;
 
-  if (!hasScores && otherMetrics.length === 0) {
+  if (scores.length === 0 && otherMetrics.length === 0) {
     return null;
   }
 
   return (
     <div className="space-y-4">
-      {hasScores ? (
-        <div className="rounded-3xl border border-(--border-dark) p-5 bg-(--neutral-100)">
-          <h4 className="text-xs uppercase tracking-[0.25em] font-semibold heading-text-dark">
-            {labels.results}
-          </h4>
-          <div className="mt-4 flex flex-wrap items-center gap-6">
-            {performance ? (
-              <ScoreRing
-                label={labels.performance}
-                score={performance}
-                variant="primary"
-              />
-            ) : null}
-            {accessibility ? (
-              <ScoreRing
-                label={labels.accessibility}
-                score={accessibility}
-                variant="secondary"
-              />
-            ) : null}
-            {bestPractices ? (
-              <ScoreRing
-                label={labels.bestPractices}
-                score={bestPractices}
-                variant="primary"
-              />
-            ) : null}
-            {seo ? (
-              <ScoreRing label={labels.seo} score={seo} variant="secondary" />
-            ) : null}
-          </div>
-        </div>
+      {scores.length > 0 ? (
+        <LighthouseScores title={labels.results} scores={scores} />
       ) : null}
 
       {otherMetrics.length > 0 ? (

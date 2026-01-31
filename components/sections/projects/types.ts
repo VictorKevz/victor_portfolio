@@ -25,6 +25,7 @@ export interface ProjectMedia {
 
 export interface ProjectLinks {
   case_study?: string;
+  case_study_label?: string;
   github?: string;
   live_site?: string;
 }
@@ -46,6 +47,7 @@ export interface ProjectItem {
   tech_stack: string[];
   results: ProjectResults;
   links: ProjectLinks;
+  isHidden?: boolean;
 }
 
 export interface SlideItem extends ProjectMedia {

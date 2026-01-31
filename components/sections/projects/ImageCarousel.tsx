@@ -18,6 +18,7 @@ interface ImageCarouselProps {
   onDot: (index: number) => void;
   onHoverStart: () => void;
   onHoverEnd: () => void;
+  onVideoEnd?: (index: number) => void;
 }
 
 export function ImageCarousel({
@@ -31,6 +32,7 @@ export function ImageCarousel({
   onDot,
   onHoverStart,
   onHoverEnd,
+  onVideoEnd,
 }: ImageCarouselProps) {
   const totalSlides = slides.length;
   const videoRefs = useRef<Array<HTMLVideoElement | null>>([]);
@@ -54,7 +56,7 @@ export function ImageCarousel({
     : ({ duration: 0.35, ease: "easeInOut" } as const);
 
   return (
-    <div className="h-64 sm:h-96 md:h-112 lg:h-full min-w-0">
+    <div className="h-64 sm:h-96 md:h-120 lg:h-full lg:min-h-120 min-w-0">
       <div
         className="relative rounded-4xl overflow-hidden bg-(--neutral-0)/90 h-full"
         style={
@@ -99,6 +101,7 @@ export function ImageCarousel({
                   autoPlay={index === activeIndex}
                   preload={index === 0 ? "auto" : "none"}
                   aria-label={slide.alt}
+                  onEnded={() => onVideoEnd?.(index)}
                 >
                   <track
                     kind="captions"
@@ -113,7 +116,7 @@ export function ImageCarousel({
                   alt={slide.alt}
                   fill
                   sizes="(min-width: 1024px) 40vw, 100vw"
-                  className="object-cover object-top lg:object-center"
+                  className="object-cover object-[50%_30%] lg:object-center"
                 />
               )}
             </motion.div>
