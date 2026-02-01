@@ -165,7 +165,7 @@
           {
             "type": "video",
             "src": "/fionstar/01-home.mp4",
-            "poster": "/fionstar/01-home-page.webp",
+            "poster": "/fionstar/thumbnail.webp",
             "alt": "Fion Star -etusivun hero-asettelu"
           },
           {
