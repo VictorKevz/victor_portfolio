@@ -7,6 +7,7 @@ interface ScoreRingProps {
   showLabel?: boolean;
   labelClassName?: string;
   align?: "start" | "center" | "end";
+  className?: string;
 }
 
 export function ScoreRing({
@@ -16,6 +17,7 @@ export function ScoreRing({
   showLabel = true,
   labelClassName = "",
   align = "center",
+  className = "",
 }: ScoreRingProps) {
   const numericScore = Number(score.replace(/[^0-9.]/g, ""));
   const value = Number.isFinite(numericScore)
@@ -40,7 +42,7 @@ export function ScoreRing({
 
   return (
     <div
-      className={`flex flex-col gap-2 ${alignmentClass}`}
+      className={`flex flex-col gap-2 ${alignmentClass} ${className}`}
       role="img"
       aria-label={`${label} score ${value} out of 100`}
     >

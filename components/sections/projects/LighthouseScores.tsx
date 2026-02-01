@@ -22,7 +22,7 @@ export function LighthouseScores({ title, scores }: LighthouseScoresProps) {
         {title}
       </h4>
       <ul
-        className="mt-4 flex flex-wrap gap-y-3 lg:flex-row lg:flex-wrap lg:items-center lg:gap-3"
+        className="mt-4 flex flex-wrap gap-y-3 lg:w-full lg:flex-nowrap lg:items-center lg:justify-between lg:gap-0"
         aria-label={title}
       >
         {scores.map((score, index) => {
@@ -30,15 +30,16 @@ export function LighthouseScores({ title, scores }: LighthouseScoresProps) {
           return (
           <li
             key={score.label}
-            className={`w-1/2 flex ${
+            className={`w-1/2 flex items-center ${
               index % 2 === 0 ? "justify-start" : "justify-end"
-            } lg:w-auto lg:justify-start`}
+            } lg:w-auto lg:justify-center`}
           >
             <ScoreRing
               label={score.label}
               score={score.score}
               variant={score.variant}
               align={align}
+              className="lg:items-center lg:text-center"
             />
           </li>
           );

@@ -229,7 +229,7 @@ export default function ContactSection({ locale }: ContactSectionProps) {
               </p>
             </header>
 
-            <dl
+            {/* <dl
               className="mt-10 space-y-5 text-left"
               aria-label="Contact information"
             >
@@ -266,7 +266,7 @@ export default function ContactSection({ locale }: ContactSectionProps) {
                   </div>
                 );
               })}
-            </dl>
+            </dl> */}
           </div>
 
           <div

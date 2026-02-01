@@ -8,6 +8,7 @@ interface LogoProps {
   onClick?: () => void;
   className?: string;
   iconClassName?: string;
+  labelClassName?: string;
 }
 
 export function Logo({
@@ -17,6 +18,7 @@ export function Logo({
   onClick,
   className = "",
   iconClassName = "",
+  labelClassName = "",
 }: LogoProps) {
   const content = (
     <>
@@ -26,7 +28,9 @@ export function Logo({
         <Image src="/victor_logo.webp" alt={`${label} logo`} width={34} height={34} />
       </span>
       {showLabel ? (
-        <span className="text-base font-semibold text-primary">{label}</span>
+        <span className={`text-base font-semibold text-primary ${labelClassName}`}>
+          {label}
+        </span>
       ) : null}
     </>
   );

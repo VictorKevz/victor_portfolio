@@ -63,7 +63,7 @@ export default async function LocaleLayout({
       <main id="main-content" className="min-h-screen">
         {children}
       </main>
-      {/* <Footer locale={locale as Locale} /> */}
+      <Footer locale={locale as Locale} />
     </>
   );
 }
