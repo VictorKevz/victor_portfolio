@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
@@ -11,6 +11,7 @@ interface ImageCarouselProps {
   slides: SlideItem[];
   activeIndex: number;
   baseImage?: string;
+  fallbackPoster?: string;
   labels: ProjectsLabels;
   prefersReducedMotion: boolean;
   shouldLoadVideo: boolean;
@@ -26,6 +27,7 @@ export function ImageCarousel({
   slides,
   activeIndex,
   baseImage,
+  fallbackPoster,
   labels,
   prefersReducedMotion,
   shouldLoadVideo,
@@ -38,20 +40,36 @@ export function ImageCarousel({
 }: ImageCarouselProps) {
   const totalSlides = slides.length;
   const videoRefs = useRef<Array<HTMLVideoElement | null>>([]);
+  const [isDesktop, setIsDesktop] = useState(true);
+  const [mobileUnlocked, setMobileUnlocked] = useState(false);
+
+  const firstVideoIndex = useMemo(
+    () => slides.findIndex((slide) => slide.type === "video"),
+    [slides],
+  );
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const mediaQuery = window.matchMedia("(min-width: 1024px)");
+    const updateDevice = () => setIsDesktop(mediaQuery.matches);
+    updateDevice();
+    mediaQuery.addEventListener("change", updateDevice);
+    return () => mediaQuery.removeEventListener("change", updateDevice);
+  }, []);
 
   useEffect(() => {
     videoRefs.current.forEach((video, index) => {
       if (!video) {
         return;
       }
-      if (index === activeIndex) {
+      if (index === activeIndex && (isDesktop || mobileUnlocked)) {
         void video.play().catch(() => undefined);
       } else {
         video.pause();
         video.currentTime = 0;
       }
     });
-  }, [activeIndex]);
+  }, [activeIndex, isDesktop, mobileUnlocked]);
 
   const transition = prefersReducedMotion
     ? ({ duration: 0 } as const)
@@ -90,19 +108,19 @@ export function ImageCarousel({
                   </span>
                 </div>
               ) : slide.type === "video" ? (
-                shouldLoadVideo && index === activeIndex ? (
+                (isDesktop && index === activeIndex) ||
+                (!isDesktop && mobileUnlocked && index === activeIndex) ? (
                   <video
                     ref={(element) => {
                       videoRefs.current[index] = element;
                     }}
                     className="h-full w-full object-cover object-top lg:object-center"
                     src={slide.src}
-                    poster={slide.poster}
+                    poster={slide.poster || fallbackPoster}
                     muted
-                    loop
                     playsInline
                     autoPlay
-                    preload="auto"
+                    preload={isDesktop ? "auto" : "metadata"}
                     aria-label={slide.alt}
                     onEnded={() => onVideoEnd?.(index)}
                   >
@@ -114,10 +132,26 @@ export function ImageCarousel({
                     />
                   </video>
                 ) : (
-                  <div className="h-full w-full flex items-center justify-center bg-(--neutral-100)">
-                    <span className="text-[0.6rem] uppercase tracking-[0.35em] heading-text-dark/70">
-                      {labels.imagePlaceholder}
-                    </span>
+                  <div className="relative h-full w-full bg-(--neutral-100)">
+                    <Image
+                      src={slide.poster || fallbackPoster || slide.src}
+                      alt={slide.alt}
+                      fill
+                      sizes="(min-width: 1024px) 40vw, 100vw"
+                      className="object-cover object-[50%_30%] lg:object-center"
+                    />
+                    {!isDesktop && index === firstVideoIndex && !mobileUnlocked ? (
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <button
+                          type="button"
+                          onClick={() => setMobileUnlocked(true)}
+                          className="h-14 w-14 rounded-full bg-(--neutral-0)/90 border border-(--border-dark) flex items-center justify-center shadow-md"
+                          aria-label="Play video"
+                        >
+                          <span className="ml-1 block h-0 w-0 border-y-[7px] border-y-transparent border-l-12 border-l-(--border-dark)" />
+                        </button>
+                      </div>
+                    ) : null}
                   </div>
                 )
               ) : (

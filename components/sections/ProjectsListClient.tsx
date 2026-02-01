@@ -182,6 +182,12 @@ export default function ProjectsListClient({
     <>
       <ul className="mt-16 grid gap-10">
         {visibleProjects.map((project, projectIndex) => {
+          const thumbnailMap: Record<string, string> = {
+            fionstar: "/fionstar/thumbnail.webp",
+            "vctr-ai": "/vctr/01-default-chat.webp",
+            "fem-weather": "/denga-sense/thumbnail.webp",
+          };
+          const fallbackPoster = thumbnailMap[project.id];
             const slides = buildSlides(
               project.media ?? [],
               labels.imagePlaceholder,
@@ -201,7 +207,7 @@ export default function ProjectsListClient({
               return Boolean(slide.poster);
             });
             const baseImageSrc =
-              baseImage?.type === "image" ? baseImage.src : undefined;
+              baseImage?.type === "image" ? baseImage.src : fallbackPoster;
             const performance = project.results.performance_lighthouse;
             const accessibility = project.results.accessibility_lighthouse;
             const bestPractices = project.results.best_practices_lighthouse;
@@ -222,8 +228,8 @@ export default function ProjectsListClient({
             return (
               <li key={project.id} className="h-full">
                 <article className="group rounded-[2.75rem] bg-(--neutral-0)/90 border border-(--border-dark) p-6 lg:p-8 shadow-2xl shadow-yellow-500/10">
-                  <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] items-center lg:items-stretch min-w-0">
-                    <div className="space-y-5 min-w-0">
+                  <div className="flex flex-col gap-6 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:gap-8 lg:items-stretch min-w-0">
+                    <div className="order-1 space-y-5 min-w-0 lg:order-0 lg:col-start-1 lg:row-start-1">
                       <div>
                         <p className="text-xs uppercase tracking-[0.3em] heading-text-dark">
                           {project.project_name}
@@ -238,7 +244,57 @@ export default function ProjectsListClient({
                           {project.description}
                         </p>
                       </div>
+                    </div>
 
+                    <div className="order-2 lg:order-0 lg:col-start-2 lg:row-span-2">
+                      <ImageCarousel
+                        slides={slides}
+                        activeIndex={activeIndex}
+                        baseImage={baseImageSrc}
+                      fallbackPoster={fallbackPoster}
+                        labels={labels}
+                        prefersReducedMotion={prefersReducedMotion}
+                        shouldLoadVideo={shouldLoadVideo}
+                        onPrev={() => {
+                          setHasInteracted(true);
+                          setActiveSlides((prev) => {
+                            const current = prev[projectIndex] ?? 0;
+                            const next = Math.max(current - 1, 0);
+                            return { ...prev, [projectIndex]: next };
+                          });
+                          setSlideDirections((prev) => ({
+                            ...prev,
+                            [projectIndex]: -1,
+                          }));
+                        }}
+                        onNext={() => {
+                          setHasInteracted(true);
+                          setActiveSlides((prev) => {
+                            const current = prev[projectIndex] ?? 0;
+                            const next = Math.min(current + 1, totalSlides - 1);
+                            return { ...prev, [projectIndex]: next };
+                          });
+                          setSlideDirections((prev) => ({
+                            ...prev,
+                            [projectIndex]: 1,
+                          }));
+                        }}
+                        onDot={(index: number) => {
+                          setHasInteracted(true);
+                          handleSlideChange(projectIndex, index);
+                        }}
+                        onHoverStart={() => {
+                          setHasInteracted(true);
+                          setHoveredProject(projectIndex);
+                        }}
+                        onHoverEnd={() => setHoveredProject(null)}
+                        onVideoEnd={(slideIndex: number) =>
+                          handleVideoEnd(projectIndex, slideIndex)
+                        }
+                      />
+                    </div>
+
+                    <div className="order-3 space-y-5 min-w-0 lg:order-0 lg:col-start-1 lg:row-start-2">
                       <div>
                         <h4 className="text-xs uppercase tracking-[0.25em] font-semibold heading-text-dark">
                           {labels.techStack}
@@ -262,51 +318,6 @@ export default function ProjectsListClient({
                         />
                       ) : null}
                     </div>
-
-                    <ImageCarousel
-                      slides={slides}
-                      activeIndex={activeIndex}
-                      baseImage={baseImageSrc}
-                      labels={labels}
-                      prefersReducedMotion={prefersReducedMotion}
-                      shouldLoadVideo={shouldLoadVideo}
-                      onPrev={() => {
-                        setHasInteracted(true);
-                        setActiveSlides((prev) => {
-                          const current = prev[projectIndex] ?? 0;
-                          const next = Math.max(current - 1, 0);
-                          return { ...prev, [projectIndex]: next };
-                        });
-                        setSlideDirections((prev) => ({
-                          ...prev,
-                          [projectIndex]: -1,
-                        }));
-                      }}
-                      onNext={() => {
-                        setHasInteracted(true);
-                        setActiveSlides((prev) => {
-                          const current = prev[projectIndex] ?? 0;
-                          const next = Math.min(current + 1, totalSlides - 1);
-                          return { ...prev, [projectIndex]: next };
-                        });
-                        setSlideDirections((prev) => ({
-                          ...prev,
-                          [projectIndex]: 1,
-                        }));
-                      }}
-                      onDot={(index: number) => {
-                        setHasInteracted(true);
-                        handleSlideChange(projectIndex, index);
-                      }}
-                      onHoverStart={() => {
-                        setHasInteracted(true);
-                        setHoveredProject(projectIndex);
-                      }}
-                      onHoverEnd={() => setHoveredProject(null)}
-                      onVideoEnd={(slideIndex: number) =>
-                        handleVideoEnd(projectIndex, slideIndex)
-                      }
-                    />
                   </div>
                   <ProjectLinksBar labels={labels} links={project.links} />
                 </article>

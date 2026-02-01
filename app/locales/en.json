@@ -215,6 +215,56 @@
         }
       },
       {
+        "id": "fem-weather",
+        "project_name": "DengaSense",
+        "project_title": "Hackathon Weather App",
+        "description": "Rapidly built and shipped a functional weather application under hackathon constraints, focusing on clean UI and real-time data handling.",
+        "media": [
+          {
+            "type": "video",
+            "src": "/denga-sense/01-home-dark.mp4",
+            "alt": "DengaSense home dashboard in dark theme showing current weather overview"
+          },
+          {
+            "type": "video",
+            "src": "/denga-sense/02-places-dark.mp4",
+            "alt": "DengaSense places view in dark theme with saved locations list"
+          },
+          {
+            "type": "video",
+            "src": "/denga-sense/03-home-light.mp4",
+            "alt": "DengaSense home dashboard in light theme with forecast panels"
+          },
+          {
+            "type": "video",
+            "src": "/denga-sense/04-insights-light.mp4",
+            "alt": "DengaSense insights view in light theme with AI weather summaries"
+          }
+        ],
+        "tech_stack": [
+          "React",
+          "API Integration",
+          "Tailwind CSS"
+        ],
+        "results": {
+          "performance_lighthouse": "97",
+          "accessibility_lighthouse": "92",
+          "best_practices_lighthouse": "92",
+          "seo_lighthouse": "100",
+          "other_metrics": [
+            "Hackathon Top 3 Finalist",
+            "3rd place in the AI category",
+            "1st place in the UI/UX category"
+          ]
+        },
+        "links": {
+          "case_study": "https://www.linkedin.com/posts/frontend-mentor_weather-app-hackathon-final-vote-activity-7381346033005510656-tg88?utm_medium=ios_app&rcm=ACoAAEbfoXoBciXSMOyj4V6lmttsg8VO6eqCC1Y&utm_source=social_share_send&utm_campaign=copy_link",
+          "case_study_label": "Project Results",
+          "github": "https://github.com/VictorKevz/denga-sense",
+          "live_site": "https://denga-sense.vercel.app/"
+        }
+      },
+      {
         "id": "vctr-ai",
         "project_name": "VCTR AI Assistant",
         "project_title": "AI-Powered Chatbot System",
@@ -265,56 +315,6 @@
           "case_study": "https://www.linkedin.com/pulse/3-lessons-i-learned-building-my-own-ai-chatbot-from-victor-kuwandira-ztdpe",
           "github": "https://github.com/VictorKevz/chat-bot",
           "live_site": "https://chatbot.victorkevz.com/"
-        }
-      },
-      {
-        "id": "fem-weather",
-        "project_name": "DengaSense",
-        "project_title": "Hackathon Weather App",
-        "description": "Rapidly built and shipped a functional weather application under hackathon constraints, focusing on clean UI and real-time data handling.",
-        "media": [
-          {
-            "type": "video",
-            "src": "/denga-sense/01-home-dark.mp4",
-            "alt": "DengaSense home dashboard in dark theme showing current weather overview"
-          },
-          {
-            "type": "video",
-            "src": "/denga-sense/02-places-dark.mp4",
-            "alt": "DengaSense places view in dark theme with saved locations list"
-          },
-          {
-            "type": "video",
-            "src": "/denga-sense/03-home-light.mp4",
-            "alt": "DengaSense home dashboard in light theme with forecast panels"
-          },
-          {
-            "type": "video",
-            "src": "/denga-sense/04-insights-light.mp4",
-            "alt": "DengaSense insights view in light theme with AI weather summaries"
-          }
-        ],
-        "tech_stack": [
-          "React",
-          "API Integration",
-          "Tailwind CSS"
-        ],
-        "results": {
-          "performance_lighthouse": "97",
-          "accessibility_lighthouse": "92",
-          "best_practices_lighthouse": "92",
-          "seo_lighthouse": "100",
-          "other_metrics": [
-            "Hackathon Top 3 Finalist",
-            "3rd place in the AI category",
-            "1st place in the UI/UX category"
-          ]
-        },
-        "links": {
-          "case_study": "https://www.linkedin.com/posts/frontend-mentor_weather-app-hackathon-final-vote-activity-7381346033005510656-tg88?utm_medium=ios_app&rcm=ACoAAEbfoXoBciXSMOyj4V6lmttsg8VO6eqCC1Y&utm_source=social_share_send&utm_campaign=copy_link",
-          "case_study_label": "Project Results",
-          "github": "https://github.com/VictorKevz/denga-sense",
-          "live_site": "https://denga-sense.vercel.app/"
         }
       },
       {

@@ -4,9 +4,19 @@ interface ScoreRingProps {
   label: string;
   score: string;
   variant: "primary" | "secondary";
+  showLabel?: boolean;
+  labelClassName?: string;
+  align?: "start" | "center" | "end";
 }
 
-export function ScoreRing({ label, score, variant }: ScoreRingProps) {
+export function ScoreRing({
+  label,
+  score,
+  variant,
+  showLabel = true,
+  labelClassName = "",
+  align = "center",
+}: ScoreRingProps) {
   const numericScore = Number(score.replace(/[^0-9.]/g, ""));
   const value = Number.isFinite(numericScore)
     ? Math.min(Math.max(numericScore, 0), 100)
@@ -21,9 +31,16 @@ export function ScoreRing({ label, score, variant }: ScoreRingProps) {
       : { start: "var(--gradient-secondary-left)", end: "var(--gradient-secondary-right)" };
   const bgClass = variant === "primary" ? "bg-gradient-primary" : "bg-gradient-secondary";
 
+  const alignmentClass =
+    align === "end"
+      ? "items-end text-right"
+      : align === "start"
+        ? "items-start text-left"
+        : "items-center text-center";
+
   return (
     <div
-      className="flex flex-col items-center text-center gap-2"
+      className={`flex flex-col gap-2 ${alignmentClass}`}
       role="img"
       aria-label={`${label} score ${value} out of 100`}
     >
@@ -70,12 +87,14 @@ export function ScoreRing({ label, score, variant }: ScoreRingProps) {
           {value}
         </span>
       </div>
-      <span
-        className="text-[0.6rem] uppercase tracking-[0.25em] heading-text-dark"
-        aria-hidden="true"
-      >
-        {label}
-      </span>
+      {showLabel ? (
+        <span
+          className={`text-[0.6rem] uppercase tracking-[0.25em] heading-text-dark ${labelClassName}`}
+          aria-hidden="true"
+        >
+          {label}
+        </span>
+      ) : null}
     </div>
   );
 }
