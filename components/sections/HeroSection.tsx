@@ -72,7 +72,7 @@ export default function HeroSection({ locale }: HeroSectionProps) {
             <div className="md:hidden mb-6">
               <div className="h-22 w-22 rounded-full bg-gradient-primary flex items-center justify-center">
                 <Image
-                  src="/victor_no_bg.webp"
+                  src="/public/victor-headshot.jpg"
                   alt={heroImageAlt as string}
                   width={75}
                   height={75}
